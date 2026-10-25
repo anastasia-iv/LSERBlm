@@ -1,0 +1,54 @@
+{
+  "model": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 24,
+    "d_model": 384,
+    "n_heads": 6,
+    "n_kv_heads": 2,
+    "d_ff": 1024,
+    "positional": "absolute",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa"
+  },
+  "train": {
+    "mode": "pretrain",
+    "seed": 42,
+    "batch_size": 4,
+    "gradient_accumulation": 8,
+    "max_steps": 20000,
+    "learning_rate": 0.0006,
+    "min_learning_rate": 6e-05,
+    "warmup_steps": 400,
+    "schedule": "wsd",
+    "decay_fraction": 0.2,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.1,
+    "gradient_clip": 1.0,
+    "precision": "auto",
+    "allow_tf32": true,
+    "compile": false,
+    "eval_interval": 250,
+    "eval_batches": 8,
+    "save_interval": 250,
+    "log_interval": 10,
+    "tensorboard": true,
+    "sample_new_tokens": 48,
+    "sample_prompts": [
+      "Београд је",
+      "Једног дана",
+      "Питање: Ко је написао роман „На Дрини ћуприја“?\nОдговор:"
+    ]
+  }
+}

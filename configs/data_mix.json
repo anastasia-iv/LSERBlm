@@ -1,0 +1,34 @@
+{
+  "sources": [
+    {
+      "name": "wikipedia",
+      "dataset": "wikimedia/wikipedia",
+      "subset": "20231101.sr",
+      "revision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa",
+      "target_text_mb": 150,
+      "max_scanned_documents": 676605,
+      "shuffle_buffer": 1000,
+      "filter_overrides": {
+        "min_characters": 500,
+        "min_words": 60,
+        "min_cyrillic_fraction": 0.85
+      },
+      "language_policy": "Serbian Wikipedia edition metadata plus script heuristics; no classifier score supplied.",
+      "license_card": "CC-BY-SA-3.0 and GFDL as listed in this snapshot's dataset card",
+      "source_url": "https://huggingface.co/datasets/wikimedia/wikipedia"
+    },
+    {
+      "name": "fineweb",
+      "dataset": "HuggingFaceFW/fineweb-2",
+      "subset": "srp_Cyrl",
+      "revision": "af9c13333eb981300149d5ca60a8e9d659b276b9",
+      "target_text_mb": 350,
+      "max_scanned_documents": 1000000,
+      "shuffle_buffer": 1000,
+      "filter_overrides": {},
+      "language_policy": "Source language label/GlotLID score plus script heuristics.",
+      "license_card": "ODC-By-1.0; see Common Crawl and source terms in dataset card",
+      "source_url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-2"
+    }
+  ]
+}
