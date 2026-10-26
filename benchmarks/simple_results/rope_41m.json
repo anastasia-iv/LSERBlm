@@ -1,0 +1,132 @@
+{
+  "run": "rope_41m",
+  "benchmark_sha256": "dda2272d17e9bc5ebb581763fdb16c5d328456d023ed4db14cdcf1519623c8ba",
+  "checkpoint_step": 20000,
+  "model_config": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 24,
+    "d_model": 384,
+    "n_heads": 6,
+    "n_kv_heads": 2,
+    "d_ff": 1024,
+    "positional": "rope",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa",
+    "qk_norm": false,
+    "block_repeats": 1
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "precision": "bf16",
+  "options": {
+    "max_new_tokens": 32,
+    "temperature": 0.8,
+    "top_k": 40,
+    "seed": 42
+  },
+  "protocol": "Exact raw Serbian prompts; no chat template. Questions: greedy; continuations: seeded sampling. EOS can end early.",
+  "examples": [
+    {
+      "id": 21,
+      "level": 1,
+      "type": "continuation",
+      "category": "География",
+      "prompt": "Србија је држава која се налази у",
+      "criterion_ru": "Логичное географическое продолжение: Европа или Балканы; без противоречий.",
+      "completion": " тешкој ситуацији.\nСрбија је земља на којој ће се сви грађани бавити,\nкаже Лане Котлен, министарка здравља и социјал",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "87386d362a9498f10f4abd66605e61acca87f1925444faa9d524c368cc0992f3"
+    },
+    {
+      "id": 22,
+      "level": 1,
+      "type": "continuation",
+      "category": "Столица",
+      "prompt": "Београд је главни град",
+      "criterion_ru": "Продолжение «Србије»; допустим связный текст о Белграде.",
+      "completion": " Републике Србије.\n\nГрађевине на Старом граду Београд\nВики\nСаборна црква Свете Марије у Београду\nСпоменици културе од",
+      "prompt_tokens": 5,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "2929564533401c7fc6aaf97f1669561c6038650718eecd9a5d1800f0dbd7f0e5"
+    },
+    {
+      "id": 23,
+      "level": 1,
+      "type": "continuation",
+      "category": "Животное",
+      "prompt": "Пас је домаћа животиња. Он",
+      "criterion_ru": "Понятное описание собаки: живёт с человеком, охраняет дом, играет; сохраняется тема.",
+      "completion": " је једини на свету који на свету прати ову расу и има врло младу, али може да се опорави.\nКао и све животиње, рас",
+      "prompt_tokens": 9,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "b8fd66f845056d17483698451143b0b83a59c0548ac5186240305fd45de9e68d"
+    },
+    {
+      "id": 24,
+      "level": 1,
+      "type": "continuation",
+      "category": "Утро",
+      "prompt": "Ујутру сам устао и",
+      "criterion_ru": "Простое бытовое действие от первого лица; сохраняются грамматика и последовательность.",
+      "completion": " пао на земљу. Успео сам да извадим плавичасту посуду. Ишао сам у школу, али су ме извад",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "28b4ac7e4b85fc5cc11e4bd7be6809657538541a7bef47c22f2ab81da5e28dc0"
+    },
+    {
+      "id": 25,
+      "level": 1,
+      "type": "continuation",
+      "category": "Прогулка",
+      "prompt": "Данас је леп дан. Деца се играју у",
+      "criterion_ru": "Подходящее место и связное продолжение о детской игре; без смены темы.",
+      "completion": " шивама. Предсједник се на крају извини да ће доћи као и до сада. И кад се деца све више покају, а родитељи су",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "1ec932f77950fc7940ed2f3a3506cf605c4e96dc0ea9f578f613bc6300dde1df"
+    }
+  ]
+}

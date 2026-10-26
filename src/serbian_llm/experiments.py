@@ -6,8 +6,13 @@ from .utils import read_json
 
 
 RUN_NAMES = (
-    "absolute_41m", "rope_41m", "serbian_283m_1", "serbian_283m_2",
-    "serbian_283m_3", "deep_continue_A", "deep_continue_B",
+    "absolute_41m",
+    "rope_41m",
+    "serbian_283m_1",
+    "serbian_283m_2",
+    "serbian_283m_3",
+    "deep_continue_A",
+    "deep_continue_B",
 )
 
 
@@ -46,8 +51,9 @@ def run_summary(folder):
         "complete": state["step"] == config["train"]["max_steps"],
         "training_seconds": state["training_seconds"],
         "timing_checkpoint_step": state["step"],
-        "processed_input_tokens": max([state["processed_input_tokens"]]
-                                      + [r["processed_input_tokens"] for r in rows]),
+        "processed_input_tokens": max(
+            [state["processed_input_tokens"]] + [r["processed_input_tokens"] for r in rows]
+        ),
         "best_step": best["state"]["step"],
         "best_validation_loss": best["state"]["best_validation_loss"],
         "latest_validation": validation[-1] if validation else None,

@@ -1,0 +1,132 @@
+{
+  "run": "deep_continue_B",
+  "benchmark_sha256": "dda2272d17e9bc5ebb581763fdb16c5d328456d023ed4db14cdcf1519623c8ba",
+  "checkpoint_step": 18000,
+  "model_config": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 44,
+    "d_model": 768,
+    "n_heads": 12,
+    "n_kv_heads": 4,
+    "d_ff": 2048,
+    "positional": "rope",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa",
+    "qk_norm": false,
+    "block_repeats": 1
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "precision": "bf16",
+  "options": {
+    "max_new_tokens": 32,
+    "temperature": 0.8,
+    "top_k": 40,
+    "seed": 42
+  },
+  "protocol": "Exact raw Serbian prompts; no chat template. Questions: greedy; continuations: seeded sampling. EOS can end early.",
+  "examples": [
+    {
+      "id": 21,
+      "level": 1,
+      "type": "continuation",
+      "category": "География",
+      "prompt": "Србија је држава која се налази у",
+      "criterion_ru": "Логичное географическое продолжение: Европа или Балканы; без противоречий.",
+      "completion": " зачетку европске цивилизације. Она је део света и једно од најутицајнијих и најконтроверзнијих личности Европе, осн",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "abab575e349408b3eadf4aa40a95772874b96b17718aed88964a086efbe76f54"
+    },
+    {
+      "id": 22,
+      "level": 1,
+      "type": "continuation",
+      "category": "Столица",
+      "prompt": "Београд је главни град",
+      "criterion_ru": "Продолжение «Србије»; допустим связный текст о Белграде.",
+      "completion": " Републике Србије на југоистоку Србије. У Београду се налази и седиште Владе Републике Србије на територији Републике Србије.\n\nИсторија \nЗграда је подигн",
+      "prompt_tokens": 5,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "30785cc6cc80d8d400d8a94b3461ecb4c528b28873b5d19172f20471a63e80f2"
+    },
+    {
+      "id": 23,
+      "level": 1,
+      "type": "continuation",
+      "category": "Животное",
+      "prompt": "Пас је домаћа животиња. Он",
+      "criterion_ru": "Понятное описание собаки: живёт с человеком, охраняет дом, играет; сохраняется тема.",
+      "completion": " је предатор који се на својој територији храни углавном месом и птицама, али и стоком. Налази се на подручју источне Европе,",
+      "prompt_tokens": 9,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "b7073b06baa0e67ad51aa65c4c59b9fe4a03721d95bc275cb0866c5164c7476c"
+    },
+    {
+      "id": 24,
+      "level": 1,
+      "type": "continuation",
+      "category": "Утро",
+      "prompt": "Ујутру сам устао и",
+      "criterion_ru": "Простое бытовое действие от первого лица; сохраняются грамматика и последовательность.",
+      "completion": " узео сам телефон и на мој телефон сам стао и наставио да трчим.\nУјутру сам се приближио средини пута, а затим сам",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "74144bba8e4a7830ae591f41ef2aef6c526e409e034171d08db48ebd75cac7f8"
+    },
+    {
+      "id": 25,
+      "level": 1,
+      "type": "continuation",
+      "category": "Прогулка",
+      "prompt": "Данас је леп дан. Деца се играју у",
+      "criterion_ru": "Подходящее место и связное продолжение о детской игре; без смены темы.",
+      "completion": " учионицама, играју на билијар столовима и забављају се. Ученици I4 и III3 своје школске дидактике су представ",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "bf411dbf261ced0ee8c123f529c6ca11299e5e05321d9f91dbf43174cbfbf6e6"
+    }
+  ]
+}

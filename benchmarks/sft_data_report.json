@@ -1,0 +1,127 @@
+{
+  "dataset": "Telefonica/EuroAlpaca",
+  "configuration": "sr",
+  "revision": "8cb6c43d1a92ec0066645296b646cbd28b0cc212",
+  "license": "CC-BY-NC-4.0",
+  "source_files": {
+    "sr/train-00000-of-00001.parquet": "1de07fda510fb39c09e58a0ff547a7754b438c91c52c716b63f2db1f050dc954",
+    "annotations/source_annotations_and_policies.parquet": "d9ff26acf6644cecdb2ec42b21af80503cdb30f8f4cd5835f2973272e7587126",
+    "annotations/validation/sr.parquet": "83b362e54767961c737774d0295fd7fd1257626556996a47ca0e2c3bf674570d"
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "filters": {
+    "scanned": 51760,
+    "task_or_domain": 10563,
+    "too_long_or_empty_tokens": 6084,
+    "script": 14118,
+    "conflicting_duplicate": 13,
+    "code_or_url": 144,
+    "upstream_coherence": 165,
+    "empty": 2,
+    "exact_duplicate": 2,
+    "benchmark_exact_overlap": 2,
+    "accepted_before_limit": 20655,
+    "conflicting_prompts_removed": 12
+  },
+  "splits": {
+    "train": {
+      "examples": 18580,
+      "input_tokens": 2818623,
+      "supervised_tokens": 2240659,
+      "max_input_tokens": 471,
+      "upstream_quality": {
+        "post_edited": 7463,
+        "coherent": 11117
+      },
+      "tasks": {
+        "creative_writing": 6771,
+        "question_answering": 6120,
+        "procedural_instructions": 687,
+        "summarization": 1104,
+        "paraphrasing": 810,
+        "classification": 1271,
+        "style_transfer": 355,
+        "information_extraction": 1462
+      }
+    },
+    "validation": {
+      "examples": 1047,
+      "input_tokens": 160470,
+      "supervised_tokens": 128480,
+      "max_input_tokens": 411,
+      "upstream_quality": {
+        "coherent": 628,
+        "post_edited": 419
+      },
+      "tasks": {
+        "question_answering": 359,
+        "creative_writing": 361,
+        "classification": 71,
+        "summarization": 60,
+        "procedural_instructions": 53,
+        "paraphrasing": 44,
+        "style_transfer": 21,
+        "information_extraction": 78
+      }
+    },
+    "test": {
+      "examples": 1028,
+      "input_tokens": 155526,
+      "supervised_tokens": 123727,
+      "max_input_tokens": 390,
+      "upstream_quality": {
+        "coherent": 618,
+        "post_edited": 410
+      },
+      "tasks": {
+        "creative_writing": 384,
+        "question_answering": 336,
+        "information_extraction": 66,
+        "classification": 61,
+        "procedural_instructions": 39,
+        "paraphrasing": 45,
+        "summarization": 76,
+        "style_transfer": 21
+      }
+    }
+  },
+  "include_post_edited": true,
+  "max_response_tokens": 256,
+  "max_steps": 2323,
+  "effective_batch": 32,
+  "planned_example_draws": 74336,
+  "train_volumes": 4,
+  "split_protocol": "90/5/5 by hashed context/question group; capped example counts; sampling with replacement during training",
+  "file_sha256": {
+    "train": "52b12e331384201f6eee8af32c6d7e9e83fbc751a95da21e16be6c1ab85efd43",
+    "validation": "cf85139341235757440e6735d62211abc052f2957c4ac5bcebaf74da4ce69455",
+    "test": "1f8d3d48deb1648c6cc76a6efaa4d8982a5299a2a9012fc39abb741ee098ca85"
+  },
+  "split_audits": {
+    "train:validation": {
+      "train_examples": 18580,
+      "validation_examples": 1047,
+      "note": "Checks exact prompts and supplied group IDs; semantic paraphrase leakage still needs auditing."
+    },
+    "train:test": {
+      "train_examples": 18580,
+      "validation_examples": 1028,
+      "note": "Checks exact prompts and supplied group IDs; semantic paraphrase leakage still needs auditing."
+    },
+    "validation:test": {
+      "train_examples": 1047,
+      "validation_examples": 1028,
+      "note": "Checks exact prompts and supplied group IDs; semantic paraphrase leakage still needs auditing."
+    }
+  },
+  "benchmarks": {
+    "benchmarks/serbian_25.jsonl": "dda2272d17e9bc5ebb581763fdb16c5d328456d023ed4db14cdcf1519623c8ba"
+  },
+  "limitations": "Upstream machine coherence metadata and script filters are not human or factual verification. Exact benchmark matching does not detect semantic paraphrases. No answers are truncated; test is reserved for final evaluation.",
+  "attribution": {
+    "creator": "Telefonica",
+    "source_url": "https://huggingface.co/datasets/Telefonica/EuroAlpaca",
+    "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "modifications": "Serbian Cyrillic/task/length filtering, exact deduplication, benchmark prompt exclusion, grouped splits, instruction template and response-only labels."
+  }
+}

@@ -1,4 +1,5 @@
 """Synchronous Parquet streaming with deterministic buffer shuffling."""
+
 import random
 from contextlib import closing
 from itertools import islice
@@ -41,10 +42,15 @@ def stream_documents(dataset, subset, revision, seed, buffer_size):
         prefix = f"data/{subset}/train"
     else:
         raise ValueError(f"Unsupported Parquet source: {dataset}/{subset}")
-    files = sorted(entry.path for entry in HfApi().list_repo_tree(
-        dataset, path_in_repo=prefix, revision=revision, repo_type="dataset"
-    ) if isinstance(entry, RepoFile) and entry.path.endswith(".parquet")
-        and (dataset != "wikimedia/wikipedia" or entry.path.rsplit("/", 1)[-1].startswith("train-")))
+    files = sorted(
+        entry.path
+        for entry in HfApi().list_repo_tree(
+            dataset, path_in_repo=prefix, revision=revision, repo_type="dataset"
+        )
+        if isinstance(entry, RepoFile)
+        and entry.path.endswith(".parquet")
+        and (dataset != "wikimedia/wikipedia" or entry.path.rsplit("/", 1)[-1].startswith("train-"))
+    )
     if not files:
         raise ValueError(f"No train Parquet shards found for {dataset}/{subset}@{revision}")
     random.Random(seed).shuffle(files)

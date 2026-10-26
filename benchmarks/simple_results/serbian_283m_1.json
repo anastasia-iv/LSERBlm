@@ -1,0 +1,132 @@
+{
+  "run": "serbian_283m_1",
+  "benchmark_sha256": "dda2272d17e9bc5ebb581763fdb16c5d328456d023ed4db14cdcf1519623c8ba",
+  "checkpoint_step": 20000,
+  "model_config": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 28,
+    "d_model": 960,
+    "n_heads": 15,
+    "n_kv_heads": 5,
+    "d_ff": 2560,
+    "positional": "rope",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa",
+    "qk_norm": false,
+    "block_repeats": 1
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "precision": "bf16",
+  "options": {
+    "max_new_tokens": 32,
+    "temperature": 0.8,
+    "top_k": 40,
+    "seed": 42
+  },
+  "protocol": "Exact raw Serbian prompts; no chat template. Questions: greedy; continuations: seeded sampling. EOS can end early.",
+  "examples": [
+    {
+      "id": 21,
+      "level": 1,
+      "type": "continuation",
+      "category": "География",
+      "prompt": "Србија је држава која се налази у",
+      "criterion_ru": "Логичное географическое продолжение: Европа или Балканы; без противоречий.",
+      "completion": " средњем веку. Најистакнутији српски владар је Михаило III, који је владао од 1165. до 1168. године",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "22c3b6994a506c32adc3563c0de84c3cc33498d597fe3dfa61e694e228b01383"
+    },
+    {
+      "id": 22,
+      "level": 1,
+      "type": "continuation",
+      "category": "Столица",
+      "prompt": "Београд је главни град",
+      "criterion_ru": "Продолжение «Србије»; допустим связный текст о Белграде.",
+      "completion": " Републике Србије.\n\nИсторија \nНасеље Бондстил, као и цео Банатски Лав, помиње се средином 19. века, након",
+      "prompt_tokens": 5,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "6967c2099a16f63087c453886a8dd2b747cce1a3fb842db5c6c5d18e6e7a030f"
+    },
+    {
+      "id": 23,
+      "level": 1,
+      "type": "continuation",
+      "category": "Животное",
+      "prompt": "Пас је домаћа животиња. Он",
+      "criterion_ru": "Понятное описание собаки: живёт с человеком, охраняет дом, играет; сохраняется тема.",
+      "completion": " је предатор, заштитник, чувар и чувар. Такође, чува и крмаче. Колико је добро, може да се укршт",
+      "prompt_tokens": 9,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "9ac218d5fa6be57cab42501428445fa0d14891f8d7d92431d5d20bf89390a3de"
+    },
+    {
+      "id": 24,
+      "level": 1,
+      "type": "continuation",
+      "category": "Утро",
+      "prompt": "Ујутру сам устао и",
+      "criterion_ru": "Простое бытовое действие от первого лица; сохраняются грамматика и последовательность.",
+      "completion": " пољубио се око врата, а на столу испред мене седјех шест пушака. Лежали смо заједно на поду, а ја сам",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "9bd044e1ae000003d58cbabacc2cffb3f35b1b082de9baac2594a5c0d2442edc"
+    },
+    {
+      "id": 25,
+      "level": 1,
+      "type": "continuation",
+      "category": "Прогулка",
+      "prompt": "Данас је леп дан. Деца се играју у",
+      "criterion_ru": "Подходящее место и связное продолжение о детской игре; без смены темы.",
+      "completion": " шаховској јакни, а на свадбеним плесовима и шаховским квачама.\nДеца су веома цен",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "34b784feb59f2cb576d258f4ec1290a6cd8bf47ea3a9db174dc45dbc07b50745"
+    }
+  ]
+}

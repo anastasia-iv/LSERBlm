@@ -1,0 +1,122 @@
+{
+  "evaluated_moscow": "2026-10-26T12:17:02.255296+03:00",
+  "training": {
+    "steps": 35000,
+    "input_tokens": 573440000,
+    "training_seconds": 13618.815059996676,
+    "learning_rate": 1e-05,
+    "optimizer_policy": "reset"
+  },
+  "best_step": 0,
+  "last_step": 35000,
+  "best_weights_equal_parent": true,
+  "best_benchmark_answers_equal_parent": true,
+  "parent_full_validation": {
+    "documents": 828,
+    "content_tokens": 767697,
+    "utf8_text_bytes": 4675030,
+    "nll_nats": 2003047.700794815,
+    "nll_per_token": 2.6091644239782297,
+    "perplexity_per_token": 13.58769255704054,
+    "bits_per_byte": 0.6181322867662282,
+    "context_length": 512,
+    "stride": 256,
+    "corpus_sha256": "c848f9e1d85c4b093700e409cdd611c8ea82391cf58d89c614005085daf1b0d7",
+    "checkpoint_sha256": "93cd8d940168385b49206d5c0433bb5faf87f0488fe4084ea37fdae47091b75a",
+    "precision": "bf16",
+    "limit": 0,
+    "protocol": "NFC text, per-document BOS, rolling token windows, every content token scored once, EOS excluded.",
+    "comparison_note": "Compare BPB on identical documents. Token-level perplexity is not comparable across tokenizers."
+  },
+  "best_full_validation": {
+    "documents": 828,
+    "content_tokens": 767697,
+    "utf8_text_bytes": 4675030,
+    "nll_nats": 2003047.700794815,
+    "nll_per_token": 2.6091644239782297,
+    "perplexity_per_token": 13.58769255704054,
+    "bits_per_byte": 0.6181322867662282,
+    "context_length": 512,
+    "stride": 256,
+    "corpus_sha256": "c848f9e1d85c4b093700e409cdd611c8ea82391cf58d89c614005085daf1b0d7",
+    "checkpoint_sha256": "8ecc0ce0e7878f7873430373590919e745197cdeb46a848edd0304b78469b2a3",
+    "precision": "bf16",
+    "limit": 0,
+    "protocol": "NFC text, per-document BOS, rolling token windows, every content token scored once, EOS excluded.",
+    "comparison_note": "Compare BPB on identical documents. Token-level perplexity is not comparable across tokenizers."
+  },
+  "last_full_validation": {
+    "documents": 828,
+    "content_tokens": 767697,
+    "utf8_text_bytes": 4675030,
+    "nll_nats": 2023576.946753459,
+    "nll_per_token": 2.6359057632809026,
+    "perplexity_per_token": 13.955947524929824,
+    "bits_per_byte": 0.6244675276818428,
+    "context_length": 512,
+    "stride": 256,
+    "corpus_sha256": "c848f9e1d85c4b093700e409cdd611c8ea82391cf58d89c614005085daf1b0d7",
+    "checkpoint_sha256": "db42ea0ddbf021451ed2fee95fa18c5345c0163330ad341bfa335f0031fe2d41",
+    "precision": "bf16",
+    "limit": 0,
+    "protocol": "NFC text, per-document BOS, rolling token windows, every content token scored once, EOS excluded.",
+    "comparison_note": "Compare BPB on identical documents. Token-level perplexity is not comparable across tokenizers."
+  },
+  "last_ppl_relative_change_percent": 2.710209745645664,
+  "last_benchmark_summary": {
+    "generated": 25,
+    "reviewed": 25,
+    "checkpoint_step": 35000,
+    "scores": {
+      "all": {
+        "examples": 25,
+        "language": 1.68,
+        "coherence": 0.28,
+        "task": 0.36
+      },
+      "level_1": {
+        "examples": 10,
+        "language": 1.5,
+        "coherence": 0.4,
+        "task": 0.5
+      },
+      "continuation": {
+        "examples": 15,
+        "language": 1.5333333333333334,
+        "coherence": 0.4,
+        "task": 0.5333333333333333
+      },
+      "question": {
+        "examples": 10,
+        "language": 1.9,
+        "coherence": 0.1,
+        "task": 0.1
+      },
+      "level_3": {
+        "examples": 5,
+        "language": 1.4,
+        "coherence": 0.2,
+        "task": 0.2
+      },
+      "level_4": {
+        "examples": 3,
+        "language": 2.0,
+        "coherence": 0.0,
+        "task": 0.0
+      },
+      "level_5": {
+        "examples": 4,
+        "language": 2.0,
+        "coherence": 0.25,
+        "task": 0.5
+      },
+      "level_2": {
+        "examples": 3,
+        "language": 2.0,
+        "coherence": 0.3333333333333333,
+        "task": 0.3333333333333333
+      }
+    },
+    "note": "Manual assistant review, not an independent expert benchmark. Scores cover reviewed cases only."
+  }
+}

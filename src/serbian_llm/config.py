@@ -27,22 +27,43 @@ class ModelConfig:
     block_repeats: int = 1
 
     def __post_init__(self):
-        if min(self.vocab_size, self.context_length, self.n_layers, self.d_model, self.n_heads, self.n_kv_heads, self.d_ff) <= 0:
+        if (
+            min(
+                self.vocab_size,
+                self.context_length,
+                self.n_layers,
+                self.d_model,
+                self.n_heads,
+                self.n_kv_heads,
+                self.d_ff,
+            )
+            <= 0
+        ):
             raise ValueError("Model dimensions must be positive.")
         if self.d_model % self.n_heads or self.n_heads % self.n_kv_heads:
-            raise ValueError("d_model must divide into n_heads; n_heads must divide into n_kv_heads groups.")
+            raise ValueError(
+                "d_model must divide into n_heads; n_heads must divide into n_kv_heads groups."
+            )
         if self.positional == "rope" and (self.d_model // self.n_heads) % 2:
             raise ValueError("RoPE requires an even head dimension.")
         if self.positional not in {"rope", "absolute"} or self.norm not in {"rmsnorm", "layernorm"}:
             raise ValueError("Unsupported positional encoding or normalization.")
         if self.ffn not in {"swiglu", "gelu"} or self.attention_backend not in {"sdpa", "eager"}:
             raise ValueError("Unsupported FFN or attention backend.")
-        if not 0 <= self.dropout < 1 or self.rope_theta <= 0 or self.norm_eps <= 0 or self.init_std <= 0:
+        if (
+            not 0 <= self.dropout < 1
+            or self.rope_theta <= 0
+            or self.norm_eps <= 0
+            or self.init_std <= 0
+        ):
             raise ValueError("Invalid dropout, RoPE, normalization, or initialization setting.")
         if not isinstance(self.qk_norm, bool):
             raise ValueError("qk_norm must be boolean.")
-        if (not isinstance(self.block_repeats, int) or isinstance(self.block_repeats, bool)
-                or self.block_repeats < 1):
+        if (
+            not isinstance(self.block_repeats, int)
+            or isinstance(self.block_repeats, bool)
+            or self.block_repeats < 1
+        ):
             raise ValueError("block_repeats must be a positive integer.")
 
 

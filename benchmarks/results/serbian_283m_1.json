@@ -1,0 +1,132 @@
+{
+  "run": "serbian_283m_1",
+  "benchmark_sha256": "5042ae57798d37cfdfd366af01ce2e8c4745b04b300dd5145d521f651bf9591e",
+  "checkpoint_step": 20000,
+  "model_config": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 28,
+    "d_model": 960,
+    "n_heads": 15,
+    "n_kv_heads": 5,
+    "d_ff": 2560,
+    "positional": "rope",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa",
+    "qk_norm": false,
+    "block_repeats": 1
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "precision": "bf16",
+  "options": {
+    "max_new_tokens": 96,
+    "temperature": 0.8,
+    "top_k": 40,
+    "seed": 42
+  },
+  "protocol": "Exact raw Serbian prompts; no chat template. Questions: greedy; continuations: seeded sampling. EOS can end early.",
+  "examples": [
+    {
+      "id": 1,
+      "level": 1,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Небо је плаво, а сунце",
+      "criterion_ru": "Например: „сија.“ Грамматически и семантически подходящее завершение.",
+      "completion": " и тропско.\nОна на северу, у централном делу Србије,\nкопно је на северу.\nТемпература ваздуха у Београду је од 2 до 5,\nод 5 до 10 степени.\nВетар слаб и умерен, у Београду слаб, у већини области\nод 5 до 7 степени.\nЈутарња температура ваздуха у Београду је око 2,\nод 8 до 9 степени.\nЈутарња температура ваздуха у Београду",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "90f040f41b5f25eceb4535587c76d7fb97ca114c9dbd191eb665d0d85c15e610"
+    },
+    {
+      "id": 2,
+      "level": 1,
+      "type": "question",
+      "category": "Вопрос",
+      "prompt": "Који је главни град Србије?",
+      "criterion_ru": "Београд.",
+      "completion": "\nКоји градови су важни за живот људи?\nКоји градови су важни за живот људи?\nКоји градови су важни за живот људи?\nКоји градови су важни за живот људи?\nКоји градови су важни за живот људи?\nКоји градови су важни за живот људи?\nКоји градови су важни за живот људи?\nКоји градови су важни за живот људи?",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "8a71e5d1a1272c223c165e7bb70130ab749de35560f3ec28f6c421ea8075213f"
+    },
+    {
+      "id": 3,
+      "level": 3,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Јутрос сам отишао на пијацу. Купио сам јабуке и свеж хлеб. Када сам се вратио кући,",
+      "criterion_ru": "Несколько связанных предложений о возвращении домой, например о приготовлении завтрака. Сохраняются рассказчик и последовательность событий.",
+      "completion": " нашао сам јабуке на пециво. Пецива су укусна, али укус који сам припремио за њих је прилично добр. Јутрос сам био у стању да напуним један килограм јабука. За само пар дана ја сам био у стању да га потпуно сазрим.\nКако сам се осећао, пробудио сам се, одлучио сам да се пробудим за недељу дана, тако да нисам могао да спавам. Већ сам",
+      "prompt_tokens": 26,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "4cbd7997e2654bad3326c7e93b1800ab95f8f691c6afacd3339935589cd06b44"
+    },
+    {
+      "id": 4,
+      "level": 4,
+      "type": "question",
+      "category": "Вопрос: подсчёт",
+      "prompt": "Милица има 12 оловака. Купила је још 6. Све оловке је поделила подједнако у 3 кутије. Колико је оловака у свакој кутији?",
+      "criterion_ru": "6 оловака. Объяснение: 12 + 6 = 18; 18 ÷ 3 = 6.",
+      "completion": "\nМилица је имала 8 различитих боја.\n- Најлепша је била са 8,5-9 цм.\n- Најлепша је била са 8,5-9 цм.\n- Најлепша је била са 8,5-9 цм.\n- Најлепша је била са 8,5-9 цм.\n- Најлепша је била са 8,5-9 цм.\n- Најлепша је",
+      "prompt_tokens": 42,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "b81a6b670a2587fbc40eb0c4c62458ceb0c2c5b44cacf4999859bf119d30364b"
+    },
+    {
+      "id": 5,
+      "level": 5,
+      "type": "question",
+      "category": "Вопрос: загадка",
+      "prompt": "Два оца и два сина појела су по једну јабуку. Укупно су појели три јабуке. Како је то могуће?",
+      "criterion_ru": "То су били деда, његов син и унук. Три человека; средний одновременно отец и сын.",
+      "completion": "\nДве јабуке су биле једна од најлепших јабука у Европи.\nДве јабуке су биле једна од најлепших јабука у Европи.\nДве јабуке су биле једна од најлепших јабука у Европи.\nДве јабуке су биле једна од најлепших јабука у Европи.\nДве јабуке су биле једна од најлепших јабука у Европи.\nДве јабуке су",
+      "prompt_tokens": 30,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "b337704f582da68d995af972dcafc67ec06d2bc2bc7bb2029b9786d639923b26"
+    }
+  ]
+}

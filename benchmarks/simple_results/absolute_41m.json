@@ -1,0 +1,132 @@
+{
+  "run": "absolute_41m",
+  "benchmark_sha256": "dda2272d17e9bc5ebb581763fdb16c5d328456d023ed4db14cdcf1519623c8ba",
+  "checkpoint_step": 20000,
+  "model_config": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 24,
+    "d_model": 384,
+    "n_heads": 6,
+    "n_kv_heads": 2,
+    "d_ff": 1024,
+    "positional": "absolute",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa",
+    "qk_norm": false,
+    "block_repeats": 1
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "precision": "bf16",
+  "options": {
+    "max_new_tokens": 32,
+    "temperature": 0.8,
+    "top_k": 40,
+    "seed": 42
+  },
+  "protocol": "Exact raw Serbian prompts; no chat template. Questions: greedy; continuations: seeded sampling. EOS can end early.",
+  "examples": [
+    {
+      "id": 21,
+      "level": 1,
+      "type": "continuation",
+      "category": "География",
+      "prompt": "Србија је држава која се налази у",
+      "criterion_ru": "Логичное географическое продолжение: Европа или Балканы; без противоречий.",
+      "completion": " саставу Велике Британије на просторима на којој ће бити изграђена, као и цео регион који ће бити на листи.\nДржаве су у оквиру",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "92046493223d1eadb16daa8c9621ac63b2af60df86919a207c458932e9ecf222"
+    },
+    {
+      "id": 22,
+      "level": 1,
+      "type": "continuation",
+      "category": "Столица",
+      "prompt": "Београд је главни град",
+      "criterion_ru": "Продолжение «Србије»; допустим связный текст о Белграде.",
+      "completion": " Републике Србије на овим просторима, а на њему ће бити изграђено велико насеље, које ће имати и своје домаће и средиште.\nГрадска кућа",
+      "prompt_tokens": 5,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "0556b3679a15b24f3a79d1a67b2822e6d0e972d11115ba72837eba782ecb0eec"
+    },
+    {
+      "id": 23,
+      "level": 1,
+      "type": "continuation",
+      "category": "Животное",
+      "prompt": "Пас је домаћа животиња. Он",
+      "criterion_ru": "Понятное описание собаки: живёт с человеком, охраняет дом, играет; сохраняется тема.",
+      "completion": " је и по природи и на копну на којој се налази и врста птица, али и на јајима.\n\nВиди још \nПасови",
+      "prompt_tokens": 9,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "d6daa90df354206036a0cd49b29e41949c68158eed4d444bf459df2fa39481f2"
+    },
+    {
+      "id": 24,
+      "level": 1,
+      "type": "continuation",
+      "category": "Утро",
+      "prompt": "Ујутру сам устао и",
+      "criterion_ru": "Простое бытовое действие от первого лица; сохраняются грамматика и последовательность.",
+      "completion": " пао на земљу. Дошао сам да пишем и да их замислим. Дошао сам да се мазим, а онда сам",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "1ce2a1776fdee298b623796fdd8a993961c8b7ce665ab3f2fc568b955301c3ce"
+    },
+    {
+      "id": 25,
+      "level": 1,
+      "type": "continuation",
+      "category": "Прогулка",
+      "prompt": "Данас је леп дан. Деца се играју у",
+      "criterion_ru": "Подходящее место и связное продолжение о детской игре; без смены темы.",
+      "completion": " разним данима. Најбоља ствар на свету је да је најбољи пријатељ.\nТреба да знате да деца воле да ходају, а деца су",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "b8c7df3c4cb970e3d212878a13cec16e8a5e29492e92771cf41f652b663649f7"
+    }
+  ]
+}

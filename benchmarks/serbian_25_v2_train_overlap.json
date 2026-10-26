@@ -1,0 +1,47 @@
+{
+  "benchmark": "benchmarks/serbian_25_v2.jsonl",
+  "benchmark_sha256": "cabd6a3dadc74da21630ebb9bb82d74cd7144a2b981876df66cde4989caee2a8",
+  "protocol": "Exact full prompt substrings after NFC, casefold and collapsed whitespace, within each field separately. SFT question/context/answer checked; pretraining text checked. This is not semantic or near-duplicate detection.",
+  "corpora": {
+    "sft_train": {
+      "path": "data/sft_euroalpaca_v2/train.jsonl",
+      "documents": 18580,
+      "prompt_matching_documents": {},
+      "matching_fields": {},
+      "example_documents": {}
+    },
+    "pretrain_original": {
+      "path": "data/serbian_mix_v2/corpus/train.jsonl",
+      "documents": 78484,
+      "prompt_matching_documents": {},
+      "matching_fields": {},
+      "example_documents": {}
+    },
+    "pretrain_expanded": {
+      "path": "data/serbian_expanded_v3/corpus/train.jsonl",
+      "documents": 250886,
+      "prompt_matching_documents": {
+        "21": 1,
+        "22": 5
+      },
+      "matching_fields": {
+        "22": [
+          "text"
+        ],
+        "21": [
+          "text"
+        ]
+      },
+      "example_documents": {
+        "22": {
+          "document_id": "7f0ae3043d36de6014d4b5e465636d3f7bc51c6285d2696d94fd0113b7f21b56",
+          "field": "text"
+        },
+        "21": {
+          "document_id": "bf51dfe124618a7a7c6dce60b13bd0199df6025213433dd00c929e061a08c89a",
+          "field": "text"
+        }
+      }
+    }
+  }
+}

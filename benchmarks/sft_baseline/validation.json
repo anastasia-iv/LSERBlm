@@ -1,0 +1,12 @@
+{
+  "examples": 1047,
+  "answer_tokens_including_eos": 128480,
+  "nll_nats": 338887.03976011276,
+  "nll_per_answer_token": 2.6376637590295204,
+  "perplexity_answer_tokens": 13.980503599759848,
+  "checkpoint_step": 30518,
+  "checkpoint_sha256": "93cd8d940168385b49206d5c0433bb5faf87f0488fe4084ea37fdae47091b75a",
+  "data_sha256": "cf85139341235757440e6735d62211abc052f2957c4ac5bcebaf74da4ce69455",
+  "precision": "bf16",
+  "protocol": "Every example once; loss on answer and EOS only; prompt and right padding masked; no truncation."
+}

@@ -13,14 +13,26 @@ from .utils import environment_versions, rng_state
 FORMAT = "serbian-small-lm-v1"
 
 
-def save_checkpoint(path, model, optimizer, scaler, state, sampler, config, identity, tokenizer, lineage):
+def save_checkpoint(
+    path, model, optimizer, scaler, state, sampler, config, identity, tokenizer, lineage
+):
     path = Path(path)
     temporary = path.with_suffix(path.suffix + ".tmp")
-    payload = {"format": FORMAT, "model_config": asdict(model.config), "model": model.state_dict(),
-               "optimizer": optimizer.state_dict(), "scaler": scaler.state_dict(),
-               "state": dict(state), "sampler": sampler.state_dict(), "rng": rng_state(),
-               "config": config, "identity": identity, "tokenizer_json": tokenizer.to_str(),
-               "lineage": lineage, "environment": environment_versions()}
+    payload = {
+        "format": FORMAT,
+        "model_config": asdict(model.config),
+        "model": model.state_dict(),
+        "optimizer": optimizer.state_dict(),
+        "scaler": scaler.state_dict(),
+        "state": dict(state),
+        "sampler": sampler.state_dict(),
+        "rng": rng_state(),
+        "config": config,
+        "identity": identity,
+        "tokenizer_json": tokenizer.to_str(),
+        "lineage": lineage,
+        "environment": environment_versions(),
+    }
     torch.save(payload, temporary)
     os.replace(temporary, path)
 

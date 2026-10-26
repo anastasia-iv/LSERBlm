@@ -1,0 +1,19 @@
+{
+  "version": "serbian_25_v2",
+  "source_benchmark": "benchmarks/serbian_25.jsonl",
+  "source_sha256": "dda2272d17e9bc5ebb581763fdb16c5d328456d023ed4db14cdcf1519623c8ba",
+  "sha256": "cabd6a3dadc74da21630ebb9bb82d74cd7144a2b981876df66cde4989caee2a8",
+  "examples": 25,
+  "shared_comparison_examples": 5,
+  "shared_max_new_tokens": 32,
+  "additional_max_new_tokens": 64,
+  "purpose": "Language/coherence demonstration with short context and writing tasks; not multi-step reasoning.",
+  "protocol": "Fixed before inference. All outputs retained, no best-of sampling. CPU FP32; questions SFT greedy; continuations temperature=.8, top_k=40, seed=42.",
+  "train_prompt_exact_substring_matches": [],
+  "note": "Exact prompt scan only, not a semantic leakage audit. This development benchmark differs from v1; old scores remain separate.",
+  "full_training_overlap_audit": "benchmarks/serbian_25_v2_train_overlap.json",
+  "pretrain_expanded_prompt_matches": {
+    "21": 1,
+    "22": 5
+  }
+}

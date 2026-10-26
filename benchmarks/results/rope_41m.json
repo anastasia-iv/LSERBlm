@@ -1,0 +1,132 @@
+{
+  "run": "rope_41m",
+  "benchmark_sha256": "5042ae57798d37cfdfd366af01ce2e8c4745b04b300dd5145d521f651bf9591e",
+  "checkpoint_step": 20000,
+  "model_config": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 24,
+    "d_model": 384,
+    "n_heads": 6,
+    "n_kv_heads": 2,
+    "d_ff": 1024,
+    "positional": "rope",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa",
+    "qk_norm": false,
+    "block_repeats": 1
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "precision": "bf16",
+  "options": {
+    "max_new_tokens": 96,
+    "temperature": 0.8,
+    "top_k": 40,
+    "seed": 42
+  },
+  "protocol": "Exact raw Serbian prompts; no chat template. Questions: greedy; continuations: seeded sampling. EOS can end early.",
+  "examples": [
+    {
+      "id": 1,
+      "level": 1,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Небо је плаво, а сунце",
+      "criterion_ru": "Например: „сија.“ Грамматически и семантически подходящее завершение.",
+      "completion": " и тропска чуда, а на њему је и више врста птица, али и животиња и птица.\n\nДоње и горје је само једна врста у свету, једна од њих је Зелена чуда и једна мочварна чуда.\n\nПонашање \n\nПатуљак или пепељана, пепељана или вунена чула, је врста из мочварног подручја. Познато",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "6e87d366b6401d19e1a982b5885300aa13d8bb916d7bb5f2b0b2dc8155ff59ed"
+    },
+    {
+      "id": 2,
+      "level": 1,
+      "type": "question",
+      "category": "Вопрос",
+      "prompt": "Који је главни град Србије?",
+      "criterion_ru": "Београд.",
+      "completion": "\nКаква је то река?\nКаква је река?\nКаква је река?\nКаква је река?\nКаква је река?\nКаква је река?\nКаква је река?\nКаква је река?\nКаква је река?\nКаква је река?\nКаква је река?\nКаква је река?\nКаква је река?\nКаква",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "16ad56e8d9ffc1e2bd70edbcd8a6fb4df65059f2c463d0d52ce216c3a691cf35"
+    },
+    {
+      "id": 3,
+      "level": 3,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Јутрос сам отишао на пијацу. Купио сам јабуке и свеж хлеб. Када сам се вратио кући,",
+      "criterion_ru": "Несколько связанных предложений о возвращении домой, например о приготовлении завтрака. Сохраняются рассказчик и последовательность событий.",
+      "completion": " и то сам се поправио, а на самој пијаци сам направио неколико грешака. Ишли смо заједно. Сада је све у реду. Сада само помажем. Боље да се упознају.\nНисам имао никаквих проблема, али у пет ујутро сам почео да пливам све.\nНисам ни знао шта, али сам одустао.\nНисам схватао ништа о јабукама.\nИвициес -",
+      "prompt_tokens": 26,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "1cfa90500fa66b13f90757969e73cac5384f22b215f0c1a430c7c64a21bab1a6"
+    },
+    {
+      "id": 4,
+      "level": 4,
+      "type": "question",
+      "category": "Вопрос: подсчёт",
+      "prompt": "Милица има 12 оловака. Купила је још 6. Све оловке је поделила подједнако у 3 кутије. Колико је оловака у свакој кутији?",
+      "criterion_ru": "6 оловака. Объяснение: 12 + 6 = 18; 18 ÷ 3 = 6.",
+      "completion": "\nМилица је рођена у Београду, а од оца је научила да чита и пише.\nМилица је рођена у Београду, а од оца је научила да чита и пише.\nМилица је рођена у Београду, а од оца је научила да чита и пише.\nМилица је рођена у Београду, а од оца је научила да чита и пише.\nМилица је рођена у Београду, а од оца је научила да",
+      "prompt_tokens": 42,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "0a479ea044727b8663bb02a5f7980460261af1ed921d67fb13d1a9d35b2d9362"
+    },
+    {
+      "id": 5,
+      "level": 5,
+      "type": "question",
+      "category": "Вопрос: загадка",
+      "prompt": "Два оца и два сина појела су по једну јабуку. Укупно су појели три јабуке. Како је то могуће?",
+      "criterion_ru": "То су били деда, његов син и унук. Три человека; средний одновременно отец и сын.",
+      "completion": "\nДва сина су се преселила у село Долово, где су живели и живели.\nДва сина су се преселила у село Долово, где су живели и живели.\nДва сина су се преселила у село Долово, где су живели и живели.\nДва сина су се преселила у село Долово, где су живели и живели.\nДва сина",
+      "prompt_tokens": 30,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "3900c4e46e1f00658de42613541fa6559f6d5d7915c21f02d790fd453c905d5b"
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "reviewer": "Assistant translation and manual review; not independent or native-speaker evaluation.",
+  "protocol": "Whole output scored, including hallucinations after a correct opening; 0 not met, 1 partly met, 2 met. Broken words/grammar preserved in original text; approximate Russian translations marked.",
+  "runs": {
+    "deep_continue_B_sft_lr1e5": {
+      "21": {
+        "completion_sha256": "0e0fb4a052c9fbef6fa6574f22a6d3844926c8f7fd8637da1561bc33767aef94",
+        "prompt_sha256": "68b4ef6be30709ed59ac39f62de3bd4ec858f6dceff2d9ad0572db4031032ec0",
+        "translation_ru": "Южной Европе», — заявила министр инноваций и технологического развития Майя Гойкович. Как она сообщила, в данный момент страна находится в",
+        "verdict_ru": "Начало географически подходит, затем появляется выдуманная цитата и обрыв.",
+        "scores": {
+          "language": 2,
+          "coherence": 1,
+          "task": 1
+        }
+      },
+      "22": {
+        "completion_sha256": "49131ac042f2b45d4e27f2d6c0349a472cc63653670e3e07a009c1a112c95f95",
+        "prompt_sha256": "8adf5d1151a3399539dabd374e5db9c768307dbcec213103f9f1b0ccaf0a468f",
+        "translation_ru": "Республики Сербии с богатым культурным наследием и более чем 15 000 городов и сёл. Простирается на 14 800 км с многочисленными",
+        "verdict_ru": "Сербия названа правильно; далее выдуманы числа и размеры.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 1
+        }
+      },
+      "23": {
+        "completion_sha256": "92532298de3b6caee017c7701bcf59e315d76fcd4806f614feaac1e069d94e18",
+        "prompt_sha256": "d1bde486d4712c42695adcc1064f0155f7749a3d47c880f601cb8a5aa74837c4",
+        "translation_ru": "умный и независимый, с длинной, мускулистой и мускулистой спиной. Он качественный и способен выполнять свои коман[ды — обрыв]",
+        "verdict_ru": "Описание животного частично подходит, но есть повтор и неестественные характеристики.",
+        "scores": {
+          "language": 1,
+          "coherence": 1,
+          "task": 1
+        }
+      },
+      "24": {
+        "completion_sha256": "fe08b9363e2e1842e1716156dd2d9c583c3710be498738dfc7c42e90b4c1c921",
+        "prompt_sha256": "35657d6b10c2153dad70ba5e5416b55bd7e4ef50a10ef6995879cc5fc0d3ab2d",
+        "translation_ru": "очищенный. Я почувствовал напряжение в мышцах плечевого сустава. Я заметил, что моя грудь растянута,",
+        "verdict_ru": "Начало грамматически не соединяется с вводом; обычное утро сменяется телесными ощущениями.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "25": {
+        "completion_sha256": "3fb3663498e1ccc658008c2f3e41aa9eba9a6a99f7d065f8077039ae925705ed",
+        "prompt_sha256": "5d39cd0af306257be4424dd2d2ea7520c8452b40e425e3307c2c86120fd4f887",
+        "translation_ru": "бутылках, играют с учительницей в доме, пекут любимый пудинг из овощей, наслаждаются вкусной едой в",
+        "verdict_ru": "Дети играют «в бутылках»; далее перечисление несогласованных действий.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        }
+      }
+    },
+    "deep_continue_B_sft_lr3e5": {
+      "21": {
+        "completion_sha256": "47cc205411a27ec94d53e46aace4afaadf92d6e6b7e267c60b81db37c997c964",
+        "prompt_sha256": "68b4ef6be30709ed59ac39f62de3bd4ec858f6dceff2d9ad0572db4031032ec0",
+        "translation_ru": "Южной Европе», — сказал президент Сербии Александр Вучич в обращении к общественности после празднования 70-летия с тех пор, как первое государство в Европе приняло закон о сельскохозяй[обрыв]",
+        "verdict_ru": "География подходит, но дальше выдумана посторонняя цитата.",
+        "scores": {
+          "language": 2,
+          "coherence": 1,
+          "task": 1
+        }
+      },
+      "22": {
+        "completion_sha256": "b3d1124cd3b6636070e6dca93ca111865882c01f540a9c16a619b5472ce4366b",
+        "prompt_sha256": "8adf5d1151a3399539dabd374e5db9c768307dbcec213103f9f1b0ccaf0a468f",
+        "translation_ru": "Южной и Юго-Восточной Европы. Охватывает более 15 000 квадратных километров и имеет богатое историческое наследие. Транзитный[обрыв]",
+        "verdict_ru": "Белград назван столицей региона вместо Сербии; выдумана площадь.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "23": {
+        "completion_sha256": "95b65ad6dad480bfa456ecb4ca6abb3106f414769f0f6ab4903d7a91a22c215b",
+        "prompt_sha256": "d1bde486d4712c42695adcc1064f0155f7749a3d47c880f601cb8a5aa74837c4",
+        "translation_ru": "умный и независимый, с длинной, мускулистой и мускулистой спиной. Кожа у него густая, без резких линий",
+        "verdict_ru": "Тема животного сохранена частично; повтор и неестественное описание кожи.",
+        "scores": {
+          "language": 1,
+          "coherence": 1,
+          "task": 1
+        }
+      },
+      "24": {
+        "completion_sha256": "3654e9448d9ee76b0106d532106e74a600d7df2486f699e5c32843010f165261",
+        "prompt_sha256": "35657d6b10c2153dad70ba5e5416b55bd7e4ef50a10ef6995879cc5fc0d3ab2d",
+        "translation_ru": "наконец я понял, что всё в порядке. В конце всё проснулось. Мы прошли через тяжёлые времена, а я глубоко",
+        "verdict_ru": "Начало согласовано с рассказчиком, затем общий эмоциональный текст вместо развития утренней сцены.",
+        "scores": {
+          "language": 2,
+          "coherence": 1,
+          "task": 1
+        }
+      },
+      "25": {
+        "completion_sha256": "296d08531c47f9613c1420512be20366b8a491ab57d233daaf5e0373327b57d4",
+        "prompt_sha256": "5d39cd0af306257be4424dd2d2ea7520c8452b40e425e3307c2c86120fd4f887",
+        "translation_ru": "бутылках, играют с учительницей в доме, делятся любимыми игрушками и наслаждаются красотой природы. Тема: «",
+        "verdict_ru": "Начало «играют в бутылках» не исправлено; далее смена сцены и служебная фраза.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "1": {
+        "completion_sha256": "3f5a3e1c18cc3df873a009945f8d7d604aa99cf0b67d8cfd59eeef498324051d",
+        "prompt_sha256": "74b9d2afe378ff60a3e020f3dfbaa6aaa55680311d9af5e9ba68734a62fff8a7",
+        "translation_ru": "медленно заходит, медленно опускает в воздух, медленно опускается до далёких звёзд, а в небо распространяется как",
+        "verdict_ru": "Начало про закат уместно, но дальше повторы и пространственная нелогичность.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 1
+        }
+      },
+      "2": {
+        "completion_sha256": "7eeb931a9f2a8ae86b023e1f6e81a12f3bc2aa8e88c89777a2cf2a19264e473c",
+        "prompt_sha256": "6b172526258b41ea0ed13575bff49b36408ad3d06b7d637cc4bc3a6f5ee096be",
+        "translation_ru": "Столица Сербии — Белград.",
+        "verdict_ru": "Правильный, законченный ответ без лишнего продолжения.",
+        "scores": {
+          "language": 2,
+          "coherence": 2,
+          "task": 2
+        }
+      },
+      "3": {
+        "completion_sha256": "62f91cf4951bf66a764c25ccb84c4d1a7047ce86993ec1f16dea1f83ecc8b64f",
+        "prompt_sha256": "e96dc28d15a163af8c391333c00d6010482ca681e628375491b3c5055272b583",
+        "translation_ru": "наконец я нашёл способ купить яблоки в магазине.",
+        "verdict_ru": "Яблоки и рассказчик сохранены, но яблоки уже были куплены; последовательность нарушена.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 1
+        }
+      },
+      "4": {
+        "completion_sha256": "03b858cd3f0b625fe536d11463e1ef5303957851f306f1e16976388a3e15a010",
+        "prompt_sha256": "22a75d5ed592ee9c05b45c63190fe5f4047feea06b8d8e7f34a441ceb41181c1",
+        "translation_ru": "У Милицы был только один карандаш.",
+        "verdict_ru": "Неверный ответ: должно быть шесть карандашей в каждой коробке.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "5": {
+        "completion_sha256": "74d3ef3f4efba9138f78972f9b2ce5408d5c4a605eb6483888324f4e921d9652",
+        "prompt_sha256": "11cb7c0af3c91332d15360932da140ec502104acf119e9b85582b1b707987872",
+        "translation_ru": "Однажды было три яблока.",
+        "verdict_ru": "Условие повторено, объяснения про деда, отца и сына нет.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "6": {
+        "completion_sha256": "f60926a5a2aff4952cff4f0663552c642268d7485519455f0589f1c5411759ed",
+        "prompt_sha256": "2a89a7e41ef6b7307dbed433b05c5ca5a0c0fda4d86f438159e74c8d1e5a33d4",
+        "translation_ru": "В среднем одна неделя — это 2–3 дня.",
+        "verdict_ru": "Неверный факт: в неделе семь дней.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "7": {
+        "completion_sha256": "3bd55b6e38ba6cc64a99c09d7a655686747589dcda5997564bb15ae603892a67",
+        "prompt_sha256": "fe79a1f304ab2b9903d5c988c07420d18b34f8d6c3958d0d0a224d70a648580f",
+        "translation_ru": "больше, чем могу. Я прошёл через тяжёлый период, но чувствую себя так, будто ни на что другое не способен. Звез[обрыв]",
+        "verdict_ru": "Напиток не назван; тема жажды уходит в эмоциональный монолог.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "8": {
+        "completion_sha256": "ff2572eea369bfa5933499671c93541f57444cdae92e7f4ffca5a74633e9266c",
+        "prompt_sha256": "a16bff727d468302333d2275cbbff9eddb20707aa84374ffbf88544889a8582a",
+        "translation_ru": "Кошка спит в углу комнаты.",
+        "verdict_ru": "Грамматически нормальный ответ, но проигнорировано «под столом».",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "9": {
+        "completion_sha256": "95a6f1b5d97dc7e03aff0c4a0075ba0968114d61140a2f8bde0706cf5fe0d627",
+        "prompt_sha256": "8174dd3fd666284f50dc359e8db7f2ee0d7cafdcbbe0a45e0c328ef8843158e1",
+        "translation_ru": "была с родителями, двумя подростками и мамой, а они собрались, когда было нужно. Это было время для исследования и",
+        "verdict_ru": "Связь с Милицей частично сохранена; библиотечное действие не названо, появляются лишние персонажи.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 1
+        }
+      },
+      "10": {
+        "completion_sha256": "1f739b2d4b49c3aae072418371680ddddc9c07db71e6b740045d9b452686b54c",
+        "prompt_sha256": "e78e81def3ef7313bc26bea5a126e16c37aad25def9626d2f2dd8c4ea8eacd6b",
+        "translation_ru": "Марка написал: «Ну, Марко требовалось около 3/4 карандаша для каждого экземпляра. Было ли этого достаточно",
+        "verdict_ru": "Неверная арифметика и согласование; ответа «11» нет.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "11": {
+        "completion_sha256": "981bbc841edb1d2787a326dd763943bbd25060245d2ade050adf3dcc740e88f3",
+        "prompt_sha256": "0dd2ab9b6acab47a8b72c5be31e3a54197af8eb749373e348ef76244772b0c04",
+        "translation_ru": "почувствовал лёгкий трепет, пока разговаривал со своей семьёй. Пока путешественники просыпались, Петар пришёл к дому, нес[обрыв]",
+        "verdict_ru": "Продолжение не учитывает дождь; появляются путешественники и другая сцена.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "12": {
+        "completion_sha256": "fd4ccd8d17ba547885b8eacac5a3035a285422b9655ad6bc057e695b49d4f422",
+        "prompt_sha256": "5a1ff62d25a15ec1124f02900c1ee836fd4fb1abf4234c746fa0dc4c4682393e",
+        "translation_ru": "Марку дала книгу Елене [приблизительно: фраза грамматически нарушена].",
+        "verdict_ru": "Елена упомянута как получатель, но фраза не даёт однозначного корректного ответа.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 1
+        }
+      },
+      "13": {
+        "completion_sha256": "8ede4d3790c1e443cd4893062fd6274ad69c89e9939ae70584bfe483483eeac6",
+        "prompt_sha256": "da3cd7c83c7e6cd8957e018be069e53c8037fed42b4e39c05e58d36ad679e682",
+        "translation_ru": "есть дорожка, которая ведёт в водопад. Там также пикник, воздушные шары и маленькие бассейны.",
+        "verdict_ru": "Описание остаётся в теме парка, но «дорожка в водопад» и перечисление неестественны.",
+        "scores": {
+          "language": 1,
+          "coherence": 1,
+          "task": 1
+        }
+      },
+      "14": {
+        "completion_sha256": "29df7bd5d8e3b3e5c8eaf9ed115e1ee7f21533d72110d1bc8a3b20cacf3d87e4",
+        "prompt_sha256": "4bc4bb8ff7f81fe0f16f2498a635a8b8c594360fa55f8027dee5184b13dde373",
+        "translation_ru": "Марк самый маленький из Марко.",
+        "verdict_ru": "Неверное имя и бессмысленное сравнение; правильный ответ — Иван.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "15": {
+        "completion_sha256": "c85d59ecf3af19b2c947bd68ddb23bc155ac3ad87fb665ce56ea5d8f7a12888b",
+        "prompt_sha256": "d2b7d46c74ed7566fd48d70f2b7d8844a4058c690de7cd578f7d92dfa342cebf",
+        "translation_ru": "передал свои чувства Путнику и поблагодарил его за всё, что тот сделал.",
+        "verdict_ru": "Путник фактически обращается к другому Путнику; роли и действие посадки потеряны.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "16": {
+        "completion_sha256": "172725cf74b326ca109f90b6cf1758cac2a3c2cc8634aaa1dc6356834fb72957",
+        "prompt_sha256": "925208a60a88fdb3048c6301c0114cb785a01c3a558e63a03967c1f4137d4c2e",
+        "translation_ru": "После того как он отправился в 15:05, он прибыл в 15:05.",
+        "verdict_ru": "Время отправления изменено, длительность 45 минут не вычислена.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "17": {
+        "completion_sha256": "4d9e908d918e7281adc33c3c7b6672e7fff986414356ff6a133e2a7c864d7db0",
+        "prompt_sha256": "49bbb587611fe79943f44731325624fb4b5a12c4126a823a7d7ccf6395e69f1b",
+        "translation_ru": "решил начать дурачиться и начать учиться.",
+        "verdict_ru": "Забытая тетрадь и оставшееся время не учтены.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "18": {
+        "completion_sha256": "b79ba1272508bc769d2e773c34e494e034a475de5260a6ae8789e2b24ec478a5",
+        "prompt_sha256": "bfed306c9cdcf2e24e0f888f270c02f88f06d6c0cdbb7e0ecef1416fcbaa86f8",
+        "translation_ru": "Да, мяч красный.",
+        "verdict_ru": "Цвет выбран без оснований вместо признания недостатка данных.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "19": {
+        "completion_sha256": "f3aac357c4aba4684a130bc5a1e632f9cadcb1fbade4c445298bcb32e95a66c7",
+        "prompt_sha256": "ac1b3d1b18205f59eeb7729c8a0e4e10a9ea78394dba8d974d82b05ef2417c8a",
+        "translation_ru": "перейти от бабушки в зоопарк в Шумадии. Когда они приблизились, они увидели, что всё в порядке, но",
+        "verdict_ru": "Дождь, домик и отсутствие зонта потеряны; появились бабушка и зоопарк.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        }
+      },
+      "20": {
+        "completion_sha256": "bd27ce238a88f4fe53c86ec50d05c243430637d5980b9f0cae58c300fe31b3d0",
+        "prompt_sha256": "efa310db854fb3c284a0d306247cabde013c0e1591d6a30edc6d8ede59dfcd2c",
+        "translation_ru": "припарковать автомобиль по зданию, в парк или даже рядом с ней.",
+        "verdict_ru": "Тема парковки частично сохранена, но решение неясно и не обосновано.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 1
+        }
+      }
+    }
+  }
+}

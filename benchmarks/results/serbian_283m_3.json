@@ -1,0 +1,132 @@
+{
+  "run": "serbian_283m_3",
+  "benchmark_sha256": "5042ae57798d37cfdfd366af01ce2e8c4745b04b300dd5145d521f651bf9591e",
+  "checkpoint_step": 20000,
+  "model_config": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 28,
+    "d_model": 960,
+    "n_heads": 15,
+    "n_kv_heads": 5,
+    "d_ff": 2560,
+    "positional": "rope",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa",
+    "qk_norm": true,
+    "block_repeats": 2
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "precision": "bf16",
+  "options": {
+    "max_new_tokens": 96,
+    "temperature": 0.8,
+    "top_k": 40,
+    "seed": 42
+  },
+  "protocol": "Exact raw Serbian prompts; no chat template. Questions: greedy; continuations: seeded sampling. EOS can end early.",
+  "examples": [
+    {
+      "id": 1,
+      "level": 1,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Небо је плаво, а сунце",
+      "criterion_ru": "Например: „сија.“ Грамматически и семантически подходящее завершение.",
+      "completion": " плаво.\nЦвркут птица кунића плав.\nТреба да дајем своје куниће.\nСад сам кунић.\nНе дај Боже више.\nНије мени, мама.\nОчи су ми сијале.\nПа пала ми је на ребра,\nА моја мама је плаво.\nСтакла маминог тера.\nОч",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "5c7b9507fbfdbeb0d936c0854d73176144bd9510b2e6657b509f3496712730ba"
+    },
+    {
+      "id": 2,
+      "level": 1,
+      "type": "question",
+      "category": "Вопрос",
+      "prompt": "Који је главни град Србије?",
+      "criterion_ru": "Београд.",
+      "completion": "\nГрадска општина Нови Београд је општина у југоисточној Европи, која се налази у југоисточној Европи, а граничи са Хрватском, Немачком и Мађарском.\nУ општини Нови Београд, на територији општине Нови Београд, налази се истоимени град.\nГрадска општина Нови Београд је општина у југоисточној Европи, која се налази у југоисточној Европи, а граничи са Хрватском, Мађарском и Мађарском.",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "72c6cf47de3fbfde7a419e564a89bb02284473d44f372502959edc5a0351d864"
+    },
+    {
+      "id": 3,
+      "level": 3,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Јутрос сам отишао на пијацу. Купио сам јабуке и свеж хлеб. Када сам се вратио кући,",
+      "criterion_ru": "Несколько связанных предложений о возвращении домой, например о приготовлении завтрака. Сохраняются рассказчик и последовательность событий.",
+      "completion": " пекао сам јабуке на роштиљу. Моја сестра се смири и пече. Кисело. Сада је ручак мало топло (температура је мања од 22 степена). Роштиљем, мама и мама правио је.\nЗатим сам отишао на ручак, био сам веома шокиран, нисам журио да се вратим кући. Какав је то утисак оставила мојој м",
+      "prompt_tokens": 26,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "9371507467f9d0ed4d8960fc9064f24e82e90cda00b914b572c94e1f59e82540"
+    },
+    {
+      "id": 4,
+      "level": 4,
+      "type": "question",
+      "category": "Вопрос: подсчёт",
+      "prompt": "Милица има 12 оловака. Купила је још 6. Све оловке је поделила подједнако у 3 кутије. Колико је оловака у свакој кутији?",
+      "criterion_ru": "6 оловака. Объяснение: 12 + 6 = 18; 18 ÷ 3 = 6.",
+      "completion": "\n- Купила сам и кутије од 4. Све оловке су биле од дрвета. Купила сам и кутије од 4. Све оловке су биле од дрвета. Купила сам и кутије од 4. Све оловке су биле од дрвета. Купила сам и кутије од 4. Све оловке су биле од дрвета. Купила сам и кутије од 4. Све оловке су биле од дрвета. Купила сам и",
+      "prompt_tokens": 42,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "cbfb4481e0bd7aa242bd70fd31c89827875e3d4939e46da09c30b6f0fe027827"
+    },
+    {
+      "id": 5,
+      "level": 5,
+      "type": "question",
+      "category": "Вопрос: загадка",
+      "prompt": "Два оца и два сина појела су по једну јабуку. Укупно су појели три јабуке. Како је то могуће?",
+      "criterion_ru": "То су били деда, његов син и унук. Три человека; средний одновременно отец и сын.",
+      "completion": "\n- Јесте, али не могу да кажем да ли је то истина.\n- Јесте, али не могу да кажем да ли је то истина.\n- Јесте, али не могу да кажем да ли је то истина.\n- Јесте, али не могу да кажем да ли је истина.\n- Јесте, али не могу да кажем да ли је истина.\n- Ј",
+      "prompt_tokens": 30,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "b1a98d59ed46151a692e58542a91e2f05f05cf00d66c7569cf582e45f90b0387"
+    }
+  ]
+}

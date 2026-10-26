@@ -1,0 +1,84 @@
+{
+  "created_moscow": "2026-10-25T22:11:25.321190+03:00",
+  "protocol": "Full identical validation; NFC; document BOS; every content token once; EOS excluded; stride=256; BF16. Selection by minimum NLL, before generation benchmark.",
+  "corpus_sha256": "c848f9e1d85c4b093700e409cdd611c8ea82391cf58d89c614005085daf1b0d7",
+  "documents": 828,
+  "content_tokens": 767697,
+  "utf8_text_bytes": 4675030,
+  "runs": {
+    "absolute_41m": {
+      "nll_per_token": 2.9764451552722355,
+      "perplexity": 19.617953762981017,
+      "bits_per_byte": 0.7051440811297982,
+      "checkpoint_sha256": "fe316607d5cc7872dc22e7a12468c0593eb8709838814e5b62daf793098bf396",
+      "checkpoint_step": 20000,
+      "parameters": 41109888,
+      "completed_steps": 20000,
+      "training_seconds": 7894.644844042137,
+      "complete": true
+    },
+    "rope_41m": {
+      "nll_per_token": 2.9238471745792713,
+      "perplexity": 18.61275641815947,
+      "bits_per_byte": 0.6926831914341403,
+      "checkpoint_step": 20000,
+      "parameters": 40913280,
+      "completed_steps": 20000,
+      "training_seconds": 9880.169649864547,
+      "complete": true
+    },
+    "serbian_283m_1": {
+      "nll_per_token": 2.809890954963018,
+      "perplexity": 16.608107088389453,
+      "bits_per_byte": 0.6656860355725606,
+      "checkpoint_step": 20000,
+      "parameters": 283170240,
+      "completed_steps": 20000,
+      "training_seconds": 6608.431201866828,
+      "complete": true
+    },
+    "serbian_283m_2": {
+      "nll_per_token": 2.8046621882288223,
+      "perplexity": 16.52149380818071,
+      "bits_per_byte": 0.664447298178829,
+      "checkpoint_step": 20000,
+      "parameters": 283183872,
+      "completed_steps": 20000,
+      "training_seconds": 7786.640989497304,
+      "complete": true
+    },
+    "serbian_283m_3": {
+      "nll_per_token": 2.8132207094249586,
+      "perplexity": 16.66350017858621,
+      "bits_per_byte": 0.6664748815038534,
+      "checkpoint_step": 20000,
+      "parameters": 283173824,
+      "completed_steps": 20000,
+      "training_seconds": 17102.2593966336,
+      "complete": true
+    },
+    "deep_continue_A": {
+      "nll_per_token": 2.809521804923521,
+      "perplexity": 16.60197733647049,
+      "bits_per_byte": 0.6655985809238701,
+      "checkpoint_sha256": "0a4c3dce90b0b26578f1f753b76e075efdecd08655ed1143079a12aa6eb44f00",
+      "checkpoint_step": 500,
+      "parameters": 283183872,
+      "completed_steps": 30518,
+      "training_seconds": 11882.310314204078,
+      "complete": true
+    },
+    "deep_continue_B": {
+      "nll_per_token": 2.6091644239782297,
+      "perplexity": 13.58769255704054,
+      "bits_per_byte": 0.6181322867662282,
+      "checkpoint_sha256": "93cd8d940168385b49206d5c0433bb5faf87f0488fe4084ea37fdae47091b75a",
+      "checkpoint_step": 30518,
+      "parameters": 283183872,
+      "completed_steps": 30518,
+      "training_seconds": 11893.961302639917,
+      "complete": true
+    }
+  },
+  "best_run": "deep_continue_B"
+}

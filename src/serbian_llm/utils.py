@@ -45,8 +45,12 @@ def seed_everything(seed):
 
 
 def rng_state():
-    return {"python": random.getstate(), "numpy": np.random.get_state(), "torch": torch.get_rng_state(),
-            "cuda": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None}
+    return {
+        "python": random.getstate(),
+        "numpy": np.random.get_state(),
+        "torch": torch.get_rng_state(),
+        "cuda": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None,
+    }
 
 
 def restore_rng(state):
@@ -71,12 +75,15 @@ def resolve_device(name="auto"):
     if name == "auto":
         name = "cuda" if torch.cuda.is_available() else "cpu"
     if str(name).startswith("cuda") and not torch.cuda.is_available():
-        raise RuntimeError("CUDA requested but unavailable. Check PyTorch/CUDA or use --device cpu.")
+        raise RuntimeError(
+            "CUDA requested but unavailable. Check PyTorch/CUDA or use --device cpu."
+        )
     return torch.device(name)
 
 
 def precision_context(device, precision):
     from contextlib import nullcontext
+
     if precision == "auto":
         precision = "bf16" if device.type == "cuda" and torch.cuda.is_bf16_supported() else "fp16"
         if device.type != "cuda":

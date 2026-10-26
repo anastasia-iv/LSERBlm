@@ -1,4 +1,5 @@
 """Expand train while preserving evaluation files byte for byte."""
+
 import json
 import shutil
 from collections import Counter
@@ -22,9 +23,12 @@ def expand_corpus(base_corpus, inputs, output, config):
     for split, digest in base_manifest["file_sha256"].items():
         if file_sha256(base / f"{split}.jsonl") != digest:
             raise ValueError("Base corpus changed: " + split)
-    identity = {"pipeline_version": "frozen-holdout-expansion-v1", "config": config,
-                "base_corpus_files": base_manifest["file_sha256"],
-                "inputs": [{"path": str(Path(p).resolve()), "sha256": file_sha256(p)} for p in inputs]}
+    identity = {
+        "pipeline_version": "frozen-holdout-expansion-v1",
+        "config": config,
+        "base_corpus_files": base_manifest["file_sha256"],
+        "inputs": [{"path": str(Path(p).resolve()), "sha256": file_sha256(p)} for p in inputs],
+    }
     manifest_path = output / "manifest.json"
     if manifest_path.exists():
         manifest = read_json(manifest_path)
@@ -36,11 +40,11 @@ def expand_corpus(base_corpus, inputs, output, config):
         return manifest
     if output.exists() and any(output.iterdir()):
         raise FileExistsError("Expansion output must be empty; partial data is not trusted.")
-    # Protect original AND cleaned forms of the frozen holdout. No holdout labels
-    # or frequencies are used for tokenizer/model fitting.
+    # Protect both original and cleaned holdout text.
     protected, paragraphs = set(), set()
-    holdout_lsh = MinHashLSH(threshold=config["near_duplicate_threshold"],
-                             num_perm=config["minhash_permutations"])
+    holdout_lsh = MinHashLSH(
+        threshold=config["near_duplicate_threshold"], num_perm=config["minhash_permutations"]
+    )
     for split in ["validation", "test"]:
         for row in read_jsonl(base / f"{split}.jsonl"):
             clean, _ = clean_document({**row, "language": "srp"}, config)
@@ -54,8 +58,9 @@ def expand_corpus(base_corpus, inputs, output, config):
     for split in ["validation", "test"]:
         shutil.copyfile(base / f"{split}.jsonl", output / f"{split}.jsonl")
     seen = set()
-    train_lsh = MinHashLSH(threshold=config["near_duplicate_threshold"],
-                          num_perm=config["minhash_permutations"])
+    train_lsh = MinHashLSH(
+        threshold=config["near_duplicate_threshold"], num_perm=config["minhash_permutations"]
+    )
     rejected, origins, source_counts, source_bytes = Counter(), Counter(), Counter(), Counter()
     counts = {"train": 0, "validation": 0, "test": 0}
     sizes = dict.fromkeys(counts, 0)
@@ -66,8 +71,7 @@ def expand_corpus(base_corpus, inputs, output, config):
         for path, is_base in [(base / "train.jsonl", True)] + [(Path(p), False) for p in inputs]:
             for row in tqdm(read_jsonl(path), desc="Expand " + path.name, unit="doc"):
                 scanned += 1
-                # The base corpus already carries verified pipeline provenance;
-                # new local inputs must supply their own language evidence.
+                # Only the prepared base corpus may reuse its language provenance.
                 candidate = {**row, "language": "srp"} if is_base else row
                 text, reason = clean_document(candidate, config)
                 signature = text_signature(text)
@@ -88,11 +92,22 @@ def expand_corpus(base_corpus, inputs, output, config):
                 if reason:
                     rejected[reason] += 1
                     if len(samples) < 100:
-                        samples.append({"reason": reason, "input": str(path), "id": row.get("id"),
-                                        "text": text[:1500]})
+                        samples.append(
+                            {
+                                "reason": reason,
+                                "input": str(path),
+                                "id": row.get("id"),
+                                "text": text[:1500],
+                            }
+                        )
                     continue
-                record = {**row, "text": text, "id": signature,
-                          "expansion_input": str(path), "base_train": is_base}
+                record = {
+                    **row,
+                    "text": text,
+                    "id": signature,
+                    "expansion_input": str(path),
+                    "base_train": is_base,
+                }
                 target.write(json.dumps(record, ensure_ascii=False) + "\n")
                 seen.add(signature)
                 if config["near_dedup"]:
@@ -111,16 +126,25 @@ def expand_corpus(base_corpus, inputs, output, config):
         for row in read_jsonl(output / f"{split}.jsonl"):
             counts[split] += 1
             sizes[split] += len(row["text"].encode("utf-8"))
-    manifest = {"identity": identity, "scanned_documents": scanned, "split_documents": counts,
-                "split_text_bytes": sizes, "clean_text_bytes": sum(sizes.values()),
-                "source_documents": dict(source_counts), "source_text_bytes": dict(source_bytes),
-                "source_statistics_scope": "train only; holdout files are copied unchanged",
-                "accepted_origins": dict(origins), "rejected": dict(rejected),
-                "frozen_holdout": {s: base_manifest["file_sha256"][s] for s in ["validation", "test"]},
-                "file_sha256": {s: file_sha256(output / f"{s}.jsonl") for s in counts},
-                "notes": ["All input candidates are train-only; validation/test are frozen.",
-                          "Exact documents, >=200-character lines and approximate document matches to holdout are excluded.",
-                          "MinHash is approximate; semantic overlap still needs manual inspection."]}
+    manifest = {
+        "identity": identity,
+        "scanned_documents": scanned,
+        "split_documents": counts,
+        "split_text_bytes": sizes,
+        "clean_text_bytes": sum(sizes.values()),
+        "source_documents": dict(source_counts),
+        "source_text_bytes": dict(source_bytes),
+        "source_statistics_scope": "train only; holdout files are copied unchanged",
+        "accepted_origins": dict(origins),
+        "rejected": dict(rejected),
+        "frozen_holdout": {s: base_manifest["file_sha256"][s] for s in ["validation", "test"]},
+        "file_sha256": {s: file_sha256(output / f"{s}.jsonl") for s in counts},
+        "notes": [
+            "All input candidates are train-only; validation/test are frozen.",
+            "Exact documents, >=200-character lines and approximate document matches to holdout are excluded.",
+            "MinHash is approximate; semantic overlap still needs manual inspection.",
+        ],
+    }
     audit = audit_splits(output)
     write_json(output / "rejected_samples.json", samples)
     write_json(output / "manifest.json", manifest)

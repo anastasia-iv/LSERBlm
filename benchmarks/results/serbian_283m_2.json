@@ -1,0 +1,132 @@
+{
+  "run": "serbian_283m_2",
+  "benchmark_sha256": "5042ae57798d37cfdfd366af01ce2e8c4745b04b300dd5145d521f651bf9591e",
+  "checkpoint_step": 20000,
+  "model_config": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 44,
+    "d_model": 768,
+    "n_heads": 12,
+    "n_kv_heads": 4,
+    "d_ff": 2048,
+    "positional": "rope",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa",
+    "qk_norm": false,
+    "block_repeats": 1
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "precision": "bf16",
+  "options": {
+    "max_new_tokens": 96,
+    "temperature": 0.8,
+    "top_k": 40,
+    "seed": 42
+  },
+  "protocol": "Exact raw Serbian prompts; no chat template. Questions: greedy; continuations: seeded sampling. EOS can end early.",
+  "examples": [
+    {
+      "id": 1,
+      "level": 1,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Небо је плаво, а сунце",
+      "criterion_ru": "Например: „сија.“ Грамматически и семантически подходящее завершение.",
+      "completion": " плаво.\n\nОсмотски притисак \n\nСунце се налази у средини где Сунце плави при дну, а Сунце плави у супротним смеровима што указује на то да је Сунце плаво.\n\nБоја звезда \n\nАко сунце плави некога, то значи да ће плавац плавати некога. Ако је сунце плаво, црно и бело, онда је то плава",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "fd5167eb9ad45135a1a9f2cc59b9eac3464658c8f9d5363da7a8789621682d6a"
+    },
+    {
+      "id": 2,
+      "level": 1,
+      "type": "question",
+      "category": "Вопрос",
+      "prompt": "Који је главни град Србије?",
+      "criterion_ru": "Београд.",
+      "completion": "\nКоји градови у Србији имају највећи број становника?\nКоји градови у Србији имају највећи број становника?\nКоји градови у Србији имају највећи број становника?\nКоји градови у Србији имају највећи број становника?\nКоји градови у Србији имају највећи број становника?\nКоји градови у Србији имају највећи број становника?\nКоји градови у Србији имају највећи број становника?\nКоји градови у Србији имају највећи број становника?",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "15cca7a9f69fde9e922e5250cb38e4094c4b51911b727ead69f84d6ad2c10d2d"
+    },
+    {
+      "id": 3,
+      "level": 3,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Јутрос сам отишао на пијацу. Купио сам јабуке и свеж хлеб. Када сам се вратио кући,",
+      "criterion_ru": "Несколько связанных предложений о возвращении домой, например о приготовлении завтрака. Сохраняются рассказчик и последовательность событий.",
+      "completion": " узео сам јабуке на роштиљу. Моја сестра се зове, а ја сам добио јабуке. Ја сам их узео, а ја сам их појео. Почео сам са јабукама.\nВеома сам се обрадовао са њима. Прво треба да одете на клинику, а онда да одете на клинику. Одмах треба да идете код доктора, а ако је потребно, можете почети са таквим алат",
+      "prompt_tokens": 26,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "70974f8b7322648e60234a1664319b29868b7537ef975eff419781a6f69d3e11"
+    },
+    {
+      "id": 4,
+      "level": 4,
+      "type": "question",
+      "category": "Вопрос: подсчёт",
+      "prompt": "Милица има 12 оловака. Купила је још 6. Све оловке је поделила подједнако у 3 кутије. Колико је оловака у свакој кутији?",
+      "criterion_ru": "6 оловака. Объяснение: 12 + 6 = 18; 18 ÷ 3 = 6.",
+      "completion": "\n- Мој брат има 12 оловака. Купио сам све оловке и имао их је. Купио сам све. Купио сам све. Купио сам све.\n- Мој брат има 12 оловака. Купио сам све. Купио сам све. Купио сам све. Купио сам све.\n- Мој брат има 12 оловака. Купио сам све. Купио сам све. Купио сам све. Куп",
+      "prompt_tokens": 42,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "4cb500e9b7705c55f1d46d0d879d950aaf83762720925113233e9a06c54b7aaa"
+    },
+    {
+      "id": 5,
+      "level": 5,
+      "type": "question",
+      "category": "Вопрос: загадка",
+      "prompt": "Два оца и два сина појела су по једну јабуку. Укупно су појели три јабуке. Како је то могуће?",
+      "criterion_ru": "То су били деда, његов син и унук. Три человека; средний одновременно отец и сын.",
+      "completion": "\nДва брата и један од њих појели су се на пијаци у Книну. Два брата и један од њих били су у соби за пријем.\nДва брата и један од њих били су у соби за пријем. Два брата и један од њих били су у соби за пријем. Два брата и један од њих били су у соби за пријем. Два брата и један од њих били су у соби за пријем.",
+      "prompt_tokens": 30,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "55bdd21c88e43949d250d6a35f5eb954a67f18ea14c8fe35aac077b9d97df702"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "selection": "Minimum full SFT-validation answer/EOS NLL; benchmark not used for selection.",
+  "selected_run": "deep_continue_B_sft_lr3e5",
+  "selected_checkpoint": "runs/deep_continue_B_sft_lr3e5/best.pt",
+  "sft_data_report": "benchmarks/sft_data_report.json",
+  "runs": {
+    "deep_continue_B_sft_lr1e5": {
+      "best_state": {
+        "step": 2323,
+        "processed_input_tokens": 11303954,
+        "supervised_tokens": 8993709,
+        "optimizer_updates": 2323,
+        "best_validation_loss": 2.2913170050741503,
+        "training_seconds": 1287.8303290614858,
+        "early_stopping_best": 2.2922896988801242,
+        "early_stopping_bad_evaluations": 2
+      },
+      "last_state": {
+        "step": 2323,
+        "processed_input_tokens": 11303954,
+        "supervised_tokens": 8993709,
+        "optimizer_updates": 2323,
+        "best_validation_loss": 2.2913170050741503,
+        "training_seconds": 1287.8303290614858,
+        "early_stopping_best": 2.2922896988801242,
+        "early_stopping_bad_evaluations": 3
+      },
+      "sft_validation": {
+        "examples": 1047,
+        "answer_tokens_including_eos": 128480,
+        "nll_nats": 294380.80798375607,
+        "nll_per_answer_token": 2.291257845452647,
+        "perplexity_answer_tokens": 9.887366641847718,
+        "checkpoint_step": 2323,
+        "checkpoint_sha256": "6b5c457154feaf86ad3284ef1aa55bbae0d162519f8daab3726de295d2ba4a60",
+        "data_sha256": "cf85139341235757440e6735d62211abc052f2957c4ac5bcebaf74da4ce69455",
+        "precision": "bf16",
+        "protocol": "Every example once; loss on answer and EOS only; prompt and right padding masked; no truncation."
+      },
+      "sft_test": {
+        "examples": 1028,
+        "answer_tokens_including_eos": 123727,
+        "nll_nats": 281906.94145941734,
+        "nll_per_answer_token": 2.278459361816074,
+        "perplexity_answer_tokens": 9.761629679219839,
+        "checkpoint_step": 2323,
+        "checkpoint_sha256": "6b5c457154feaf86ad3284ef1aa55bbae0d162519f8daab3726de295d2ba4a60",
+        "data_sha256": "1f8d3d48deb1648c6cc76a6efaa4d8982a5299a2a9012fc39abb741ee098ca85",
+        "precision": "bf16",
+        "protocol": "Every example once; loss on answer and EOS only; prompt and right padding masked; no truncation."
+      },
+      "lm_validation": {
+        "documents": 828,
+        "content_tokens": 767697,
+        "utf8_text_bytes": 4675030,
+        "nll_nats": 2050265.1825720277,
+        "nll_per_token": 2.6706697858296016,
+        "perplexity_per_token": 14.449644119250731,
+        "bits_per_byte": 0.6327034075511749,
+        "context_length": 512,
+        "stride": 256,
+        "corpus_sha256": "c848f9e1d85c4b093700e409cdd611c8ea82391cf58d89c614005085daf1b0d7",
+        "checkpoint_sha256": "6b5c457154feaf86ad3284ef1aa55bbae0d162519f8daab3726de295d2ba4a60",
+        "precision": "bf16",
+        "limit": 0,
+        "protocol": "NFC text, per-document BOS, rolling token windows, every content token scored once, EOS excluded.",
+        "comparison_note": "Compare BPB on identical documents. Token-level perplexity is not comparable across tokenizers."
+      },
+      "generation_statistics": {
+        "question_examples": 10,
+        "question_mean_generated_tokens": 14.7,
+        "question_finished_before_32_tokens": 9
+      }
+    },
+    "deep_continue_B_sft_lr3e5": {
+      "best_state": {
+        "step": 800,
+        "processed_input_tokens": 3886159,
+        "supervised_tokens": 3092165,
+        "optimizer_updates": 800,
+        "best_validation_loss": 2.283761464115951,
+        "training_seconds": 449.20639356970787,
+        "early_stopping_best": 2.2868387476630407,
+        "early_stopping_bad_evaluations": 0
+      },
+      "last_state": {
+        "step": 1300,
+        "processed_input_tokens": 6323459,
+        "supervised_tokens": 5030960,
+        "optimizer_updates": 1300,
+        "best_validation_loss": 2.283761464115951,
+        "training_seconds": 724.2183712306432,
+        "early_stopping_best": 2.283761464115951,
+        "early_stopping_bad_evaluations": 5,
+        "early_stopped": true
+      },
+      "sft_validation": {
+        "examples": 1047,
+        "answer_tokens_including_eos": 128480,
+        "nll_nats": 293425.8015139103,
+        "nll_per_answer_token": 2.283824731583984,
+        "perplexity_answer_tokens": 9.814145188568249,
+        "checkpoint_step": 800,
+        "checkpoint_sha256": "2a255277015b3a9a5234aedca485b23a1efe8bc64363f9f729ca6d3af6078ba4",
+        "data_sha256": "cf85139341235757440e6735d62211abc052f2957c4ac5bcebaf74da4ce69455",
+        "precision": "bf16",
+        "protocol": "Every example once; loss on answer and EOS only; prompt and right padding masked; no truncation."
+      },
+      "sft_test": {
+        "examples": 1028,
+        "answer_tokens_including_eos": 123727,
+        "nll_nats": 280804.60088431835,
+        "nll_per_answer_token": 2.2695499032896485,
+        "perplexity_answer_tokens": 9.67504512792179,
+        "checkpoint_step": 800,
+        "checkpoint_sha256": "2a255277015b3a9a5234aedca485b23a1efe8bc64363f9f729ca6d3af6078ba4",
+        "data_sha256": "1f8d3d48deb1648c6cc76a6efaa4d8982a5299a2a9012fc39abb741ee098ca85",
+        "precision": "bf16",
+        "protocol": "Every example once; loss on answer and EOS only; prompt and right padding masked; no truncation."
+      },
+      "lm_validation": {
+        "documents": 828,
+        "content_tokens": 767697,
+        "utf8_text_bytes": 4675030,
+        "nll_nats": 2093805.2644923665,
+        "nll_per_token": 2.7273849767452085,
+        "perplexity_per_token": 15.292843543916769,
+        "bits_per_byte": 0.6461396978565573,
+        "context_length": 512,
+        "stride": 256,
+        "corpus_sha256": "c848f9e1d85c4b093700e409cdd611c8ea82391cf58d89c614005085daf1b0d7",
+        "checkpoint_sha256": "2a255277015b3a9a5234aedca485b23a1efe8bc64363f9f729ca6d3af6078ba4",
+        "precision": "bf16",
+        "limit": 0,
+        "protocol": "NFC text, per-document BOS, rolling token windows, every content token scored once, EOS excluded.",
+        "comparison_note": "Compare BPB on identical documents. Token-level perplexity is not comparable across tokenizers."
+      },
+      "generation_statistics": {
+        "question_examples": 10,
+        "question_mean_generated_tokens": 13.0,
+        "question_finished_before_32_tokens": 9
+      }
+    }
+  },
+  "baseline": {
+    "sft_validation": {
+      "examples": 1047,
+      "answer_tokens_including_eos": 128480,
+      "nll_nats": 338887.03976011276,
+      "nll_per_answer_token": 2.6376637590295204,
+      "perplexity_answer_tokens": 13.980503599759848,
+      "checkpoint_step": 30518,
+      "checkpoint_sha256": "93cd8d940168385b49206d5c0433bb5faf87f0488fe4084ea37fdae47091b75a",
+      "data_sha256": "cf85139341235757440e6735d62211abc052f2957c4ac5bcebaf74da4ce69455",
+      "precision": "bf16",
+      "protocol": "Every example once; loss on answer and EOS only; prompt and right padding masked; no truncation."
+    },
+    "sft_test": {
+      "examples": 1028,
+      "answer_tokens_including_eos": 123727,
+      "nll_nats": 326582.23804187775,
+      "nll_per_answer_token": 2.6395389691973277,
+      "perplexity_answer_tokens": 14.006744578246508,
+      "checkpoint_step": 30518,
+      "checkpoint_sha256": "93cd8d940168385b49206d5c0433bb5faf87f0488fe4084ea37fdae47091b75a",
+      "data_sha256": "1f8d3d48deb1648c6cc76a6efaa4d8982a5299a2a9012fc39abb741ee098ca85",
+      "precision": "bf16",
+      "protocol": "Every example once; loss on answer and EOS only; prompt and right padding masked; no truncation."
+    },
+    "lm_validation": {
+      "nll_per_token": 2.6091644239782297,
+      "perplexity": 13.58769255704054,
+      "bits_per_byte": 0.6181322867662282,
+      "checkpoint_sha256": "93cd8d940168385b49206d5c0433bb5faf87f0488fe4084ea37fdae47091b75a",
+      "checkpoint_step": 30518,
+      "parameters": 283183872,
+      "completed_steps": 30518,
+      "training_seconds": 11893.961302639917,
+      "complete": true
+    },
+    "generation_statistics": {
+      "question_examples": 10,
+      "question_mean_generated_tokens": 32.0,
+      "question_finished_before_32_tokens": 0
+    }
+  }
+}

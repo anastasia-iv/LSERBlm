@@ -1,0 +1,132 @@
+{
+  "run": "absolute_41m",
+  "benchmark_sha256": "5042ae57798d37cfdfd366af01ce2e8c4745b04b300dd5145d521f651bf9591e",
+  "checkpoint_step": 20000,
+  "model_config": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 24,
+    "d_model": 384,
+    "n_heads": 6,
+    "n_kv_heads": 2,
+    "d_ff": 1024,
+    "positional": "absolute",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa",
+    "qk_norm": false,
+    "block_repeats": 1
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "precision": "bf16",
+  "options": {
+    "max_new_tokens": 96,
+    "temperature": 0.8,
+    "top_k": 40,
+    "seed": 42
+  },
+  "protocol": "Exact raw Serbian prompts; no chat template. Questions: greedy; continuations: seeded sampling. EOS can end early.",
+  "examples": [
+    {
+      "id": 1,
+      "level": 1,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Небо је плаво, а сунце",
+      "criterion_ru": "Например: „сија.“ Грамматически и семантически подходящее завершение.",
+      "completion": " и птице. Најбоља плавуша је Пилићи.\n\nРеференце\n\nЛитература \nЗ. Шуица, Лепа Госибо-Књажевац, 2009.\n\nСпољашње везе \nОфициус Шуица\n\nШ",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 62,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "64a5f6578b4cd5a9ef0cb3cd52f7519f7f732827b72877e3d6d720e3987aff6d"
+    },
+    {
+      "id": 2,
+      "level": 1,
+      "type": "question",
+      "category": "Вопрос",
+      "prompt": "Који је главни град Србије?",
+      "criterion_ru": "Београд.",
+      "completion": "\nКоји је најбољи град у Србији?\nКоји је најбољи град у Србији?\nКоји је најбољи град у Србији?\nКоји је најбољи град у Србији?\nКоји је најбољи град у Србији?\nКоји је најбољи град у Србији?\nКоји је најбољи град у Србији?\nКоји је најбољи град у Србији?\nКоји је најбољи град у Србији?\nКоји је најбољи град у Србији?\nКоји је најбољи град",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "d76537a06f1767e92c850b705f470bdbb98d28f37e30f87444e0d48f8e768a81"
+    },
+    {
+      "id": 3,
+      "level": 3,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Јутрос сам отишао на пијацу. Купио сам јабуке и свеж хлеб. Када сам се вратио кући,",
+      "criterion_ru": "Несколько связанных предложений о возвращении домой, например о приготовлении завтрака. Сохраняются рассказчик и последовательность событий.",
+      "completion": " пекао сам јабуке на мојој кожи. Почео сам да их припремам на бази јабуке.\nЈутрос сам имао рецепт, купио само сир. Односите се само на њега. Раније сам користио јабуке и јабуке, а сада је укусан као што су јабуке, јабуке, шаргарепу, краставце.\nСа јабукама које сам користио треба направити смешу, а онда је тако",
+      "prompt_tokens": 26,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "cfba9d88b49b22dd3b8b7c51a37b50b97df425bd58a13c847497a4868ada3cac"
+    },
+    {
+      "id": 4,
+      "level": 4,
+      "type": "question",
+      "category": "Вопрос: подсчёт",
+      "prompt": "Милица има 12 оловака. Купила је још 6. Све оловке је поделила подједнако у 3 кутије. Колико је оловака у свакој кутији?",
+      "criterion_ru": "6 оловака. Объяснение: 12 + 6 = 18; 18 ÷ 3 = 6.",
+      "completion": "\n– У кутији је била једна кутија. Колико је оловка у кутији?\n– У кутији је била једна кутија. Колико је оловка у кутији?\n– У кутији је била једна кутија. Колико је оловка у кутији?\n– Колико је оловка у кутији?\n– Колико је оловка у кутији?\n– Колико је оловка у",
+      "prompt_tokens": 42,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "8a5e344d87d99c5012df291f79a7268e0a967dd4b7b808702776a33056d9f4b7"
+    },
+    {
+      "id": 5,
+      "level": 5,
+      "type": "question",
+      "category": "Вопрос: загадка",
+      "prompt": "Два оца и два сина појела су по једну јабуку. Укупно су појели три јабуке. Како је то могуће?",
+      "criterion_ru": "То су били деда, његов син и унук. Три человека; средний одновременно отец и сын.",
+      "completion": "\n- Два су била у браку.\n- Два су били у браку.\n- Два су били у браку.\n- Два су били у браку.\n- Два су били у браку.\n- Два су били у браку.\n- Два су били у браку.\n- Два су били у браку.\n- Два су били у браку.\n- Два су били",
+      "prompt_tokens": 30,
+      "prompt_was_truncated": false,
+      "generated_tokens": 96,
+      "generation": {
+        "max_new_tokens": 96,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "58e254bb06aa551cccdfcab9b9fe8a0b3a4317d713ea5b9e8707c27d0b8f7f17"
+    }
+  ]
+}

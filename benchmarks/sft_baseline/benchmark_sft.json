@@ -1,0 +1,523 @@
+{
+  "run": "runs/deep_continue_B/best.pt",
+  "benchmark_sha256": "dda2272d17e9bc5ebb581763fdb16c5d328456d023ed4db14cdcf1519623c8ba",
+  "checkpoint_step": 30518,
+  "model_config": {
+    "vocab_size": 8192,
+    "context_length": 512,
+    "n_layers": 44,
+    "d_model": 768,
+    "n_heads": 12,
+    "n_kv_heads": 4,
+    "d_ff": 2048,
+    "positional": "rope",
+    "rope_theta": 10000.0,
+    "norm": "rmsnorm",
+    "ffn": "swiglu",
+    "tie_embeddings": true,
+    "dropout": 0.0,
+    "norm_eps": 1e-05,
+    "init_std": 0.02,
+    "gradient_checkpointing": false,
+    "attention_backend": "sdpa",
+    "qk_norm": false,
+    "block_repeats": 1
+  },
+  "tokenizer_sha256": "ec178bebd07a4b2e141f17128312d7ee1656320c39dc2cb3f1014da152fd0d54",
+  "precision": "fp32",
+  "options": {
+    "max_new_tokens": 32,
+    "temperature": 0.8,
+    "top_k": 40,
+    "seed": 42
+  },
+  "protocol": "Questions use Питање/Одговор, greedy. Continuations use raw prompts, seeded sampling. EOS can end early.",
+  "examples": [
+    {
+      "id": 21,
+      "level": 1,
+      "type": "continuation",
+      "category": "География",
+      "prompt": "Србија је држава која се налази у",
+      "criterion_ru": "Логичное географическое продолжение: Европа или Балканы; без противоречий.",
+      "completion": " западној Европи, а по броју становника је четврта на Балкану. По подацима из 2021. године, Србија је на другом месту на светској ранг-",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "f74db94d7c06fcd82bc178bcd53c56131e53d4130fc3b22f9c41a5fb3e4138a7"
+    },
+    {
+      "id": 22,
+      "level": 1,
+      "type": "continuation",
+      "category": "Столица",
+      "prompt": "Београд је главни град",
+      "criterion_ru": "Продолжение «Србије»; допустим связный текст о Белграде.",
+      "completion": " Републике Србије са богатим културним наслеђем и преко 15.000 градова и општина налази се у главном граду.\nДржава Србија са поносом",
+      "prompt_tokens": 5,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "11670a5e873d37ebcb8c369fed845712c5d412adcc7e7a613da2ef24530edc24"
+    },
+    {
+      "id": 23,
+      "level": 1,
+      "type": "continuation",
+      "category": "Животное",
+      "prompt": "Пас је домаћа животиња. Он",
+      "criterion_ru": "Понятное описание собаки: живёт с человеком, охраняет дом, играет; сохраняется тема.",
+      "completion": " је увек био добар друг и зујати у њега.\nНе треба заборавити да се пас често користи као пратилац.\nВласника често сматрају",
+      "prompt_tokens": 9,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "e55eb306bf706bf8d8630d7b6d54e6139e66c5d3516cfe6db86c191e76e4d8a4"
+    },
+    {
+      "id": 24,
+      "level": 1,
+      "type": "continuation",
+      "category": "Утро",
+      "prompt": "Ујутру сам устао и",
+      "criterion_ru": "Простое бытовое действие от первого лица; сохраняются грамматика и последовательность.",
+      "completion": " прочишћен, по твом милом лицу мило.\nЧудо моје, Господе, молим те опрости, да ми опр",
+      "prompt_tokens": 8,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "383e86df525c830c8470cad4e370ef35ac337f51d6f24566605d96d45ba6ebce"
+    },
+    {
+      "id": 25,
+      "level": 1,
+      "type": "continuation",
+      "category": "Прогулка",
+      "prompt": "Данас је леп дан. Деца се играју у",
+      "criterion_ru": "Подходящее место и связное продолжение о детской игре; без смены темы.",
+      "completion": " флашама, а деца играју у флашама.\nЗдраво! Дете не може да се хода. Дете има фазу развоја",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "1ba5748db2312fae86c487cfb62a2a3dfc1f88f229eaa5301d7e12f18be37769"
+    },
+    {
+      "id": 1,
+      "level": 1,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Небо је плаво, а сунце",
+      "criterion_ru": "Например: „сија.“ Грамматически и семантически подходящее завершение.",
+      "completion": " је јарко.\nПрошлогодишња мама се уплашила да се не жали на њу, а након што је открила своју",
+      "prompt_tokens": 11,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "6f781de5d439b4f2ba56ffdceb4a0b8955ea5a7b3bedcb3d777697a03e4321eb"
+    },
+    {
+      "id": 2,
+      "level": 1,
+      "type": "question",
+      "category": "Вопрос",
+      "prompt": "Који је главни град Србије?",
+      "criterion_ru": "Београд.",
+      "completion": " Који је највећи град у Србији?\nОдговор: Који је највећи град у Србији?\nОдговор: Који је највећи град у Србији?",
+      "prompt_tokens": 16,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "model_prompt": "Питање: Који је главни град Србије?\nОдговор:",
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "f51cbf7cdbc22ba1b0f06f6ce9b00c2fd64fdac91561b4c0b5cef8541977aa54"
+    },
+    {
+      "id": 3,
+      "level": 3,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Јутрос сам отишао на пијацу. Купио сам јабуке и свеж хлеб. Када сам се вратио кући,",
+      "criterion_ru": "Несколько связанных предложений о возвращении домой, например о приготовлении завтрака. Сохраняются рассказчик и последовательность событий.",
+      "completion": " прочишћен, био је здрав и чист.\nУх, ово није моје право.\nЈа сам слободан.\nЈа сам слобод",
+      "prompt_tokens": 26,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "6fae2691510a15b8fe2a1f7834a6a6ba6d363f1ed229b7a373a1221f43a46f95"
+    },
+    {
+      "id": 4,
+      "level": 4,
+      "type": "question",
+      "category": "Вопрос: подсчёт",
+      "prompt": "Милица има 12 оловака. Купила је још 6. Све оловке је поделила подједнако у 3 кутије. Колико је оловака у свакој кутији?",
+      "criterion_ru": "6 оловака. Объяснение: 12 + 6 = 18; 18 ÷ 3 = 6.",
+      "completion": " Милица има само једну оловку. Купила је још једну оловку. Купила је још једну оловку. Купила је још једну",
+      "prompt_tokens": 50,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "model_prompt": "Питање: Милица има 12 оловака. Купила је још 6. Све оловке је поделила подједнако у 3 кутије. Колико је оловака у свакој кутији?\nОдговор:",
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "388efc08bd3d845be8d580cbf4b301b21690769828f5321c7687ba8aded70edf"
+    },
+    {
+      "id": 5,
+      "level": 5,
+      "type": "question",
+      "category": "Вопрос: загадка",
+      "prompt": "Два оца и два сина појела су по једну јабуку. Укупно су појели три јабуке. Како је то могуће?",
+      "criterion_ru": "То су били деда, његов син и унук. Три человека; средний одновременно отец и сын.",
+      "completion": " Два оца и два сина појели су по једну јабуку.\nПитање: Два оца и један син су појели по једну јабуку",
+      "prompt_tokens": 38,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "model_prompt": "Питање: Два оца и два сина појела су по једну јабуку. Укупно су појели три јабуке. Како је то могуће?\nОдговор:",
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "b60313370fd07909e4b820b3c3165ab389986ff7bca81139f7ba3373b7bb9da7"
+    },
+    {
+      "id": 6,
+      "level": 1,
+      "type": "question",
+      "category": "Вопрос",
+      "prompt": "Колико дана има једна недеља?",
+      "criterion_ru": "Седам / 7.",
+      "completion": "\nОдговор:\nОдговор:\nОдговор:\nОдговор:\nОдговор:\nОдговор:\nОдговор:\nОдговор:",
+      "prompt_tokens": 16,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "model_prompt": "Питање: Колико дана има једна недеља?\nОдговор:",
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "1848266a02d61caff29dfc158c1d902a48e165a327b6350916f50b5708d86405"
+    },
+    {
+      "id": 7,
+      "level": 1,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Када сам жедан, пијем",
+      "criterion_ru": "Например: „воду.“ Допускается другой подходящий напиток.",
+      "completion": " у складу са потребама тела. Ако је мој стомак превише уморан, онда се појави дијареја. Бол у стомаку, мучнина, гр",
+      "prompt_tokens": 9,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "8741011bcebbcdaead4f10eaaf72d81d16a3779621f205af8c0f8524caa06a64"
+    },
+    {
+      "id": 8,
+      "level": 1,
+      "type": "question",
+      "category": "Вопрос по контексту",
+      "prompt": "Мачка спава испод стола. Где спава мачка?",
+      "criterion_ru": "Испод стола.",
+      "completion": " Мачка спава у стану.\nОдговор: Мачка спава у стану.\nОдговор: Мачка спава у стану.",
+      "prompt_tokens": 24,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "model_prompt": "Питање: Мачка спава испод стола. Где спава мачка?\nОдговор:",
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "d12c260079fb17efe6b4b9339226a2f6ccedd54db05cce97b9e598363a733e78"
+    },
+    {
+      "id": 9,
+      "level": 2,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Милица је јуче отишла у библиотеку. Тамо је",
+      "criterion_ru": "Например: „позајмила занимљиву књигу.“ Продолжение соответствует месту; при сохранении Милицы субъектом соблюдается согласование.",
+      "completion": " у пратњи баке и деке, разговарала са њима.\n- Када сам се вратила, пре неколико година је почела да ме зове да ме",
+      "prompt_tokens": 14,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "143a244502c587281f84105608e6b65e378040fae141a3ca5f9f1fc303aafdfb"
+    },
+    {
+      "id": 10,
+      "level": 2,
+      "type": "question",
+      "category": "Вопрос: подсчёт",
+      "prompt": "У кутији је било 8 оловака. Марко је додао још 3 оловке. Колико оловака сада има у кутији?",
+      "criterion_ru": "11 / једанаест оловака.",
+      "completion": " У кутији је било 8 оловака. Колико оловака има у кутији? Колико оловака има у кутији? Колико",
+      "prompt_tokens": 39,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "model_prompt": "Питање: У кутији је било 8 оловака. Марко је додао још 3 оловке. Колико оловака сада има у кутији?\nОдговор:",
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "5909b1a92618956fa64cbd8c1b7b0b75d5234a4a89d4c839896697646b5cb7ab"
+    },
+    {
+      "id": 11,
+      "level": 2,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Напољу је почела јака киша. Пре него што је изашао, Петар је",
+      "criterion_ru": "Например: „узео кишобран.“ Возможны другие логичные действия; согласование с Петром корректно.",
+      "completion": " пренео пиће по твом лику у ваздух, где смо се упознали. Прошло је неколико сати. Дружио са нама.",
+      "prompt_tokens": 19,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "e4e643a93bdd74106f967de3afa4d69f052d09c653c98c7868aa2178ade1eed1"
+    },
+    {
+      "id": 12,
+      "level": 3,
+      "type": "question",
+      "category": "Вопрос по контексту",
+      "prompt": "Ана је дала књигу Марку. Марко је затим дао ту књигу Јелени. Код кога је књига на крају?",
+      "criterion_ru": "Код Јелене. Важно отслеживать последнее перемещение книги.",
+      "completion": " Јелена је дала књигу Марку. Марко је био дописник из Москве.\nОдговор: Јелена је дала књигу Марку.",
+      "prompt_tokens": 34,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "model_prompt": "Питање: Ана је дала књигу Марку. Марко је затим дао ту књигу Јелени. Код кога је књига на крају?\nОдговор:",
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "63e9860f58023f70c85894b17e9797652b87ac6831f64687ff5d84e996fb1191"
+    },
+    {
+      "id": 13,
+      "level": 3,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "У нашем граду постоји мали парк. Људи тамо долазе да шетају и да се одморе. Поред стазе расте високо дрвеће, а у средини парка",
+      "criterion_ru": "Связное описание парка: скамейки, фонтан, площадка и т. п. Без внезапного перехода к посторонней теме.",
+      "completion": " постоји и велики парк за посматрање. У близини ове планине, налази се Мали парк. Простор је леп, а у близини је и парк за",
+      "prompt_tokens": 35,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "84a5482a12e1df111dd7304adbbee9acfcf9985af2776bf0519006b77de3d2cd"
+    },
+    {
+      "id": 14,
+      "level": 3,
+      "type": "question",
+      "category": "Вопрос: сравнение",
+      "prompt": "Ана је виша од Марка, а Марко је виши од Ивана. Ко је најнижи?",
+      "criterion_ru": "Иван.",
+      "completion": " Ана је виша од Марка.\nПитање: Мислим да је Марк виши од Марка.\nОдговор: Ана",
+      "prompt_tokens": 34,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "model_prompt": "Питање: Ана је виша од Марка, а Марко је виши од Ивана. Ко је најнижи?\nОдговор:",
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "f1be06dc313c2853e6a6aaed3c536f219aa1ddf1052397237ae5436c9dc39799"
+    },
+    {
+      "id": 15,
+      "level": 3,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "„Да ли је ово место слободно?“ упитао је путник у возу. „Јесте, изволите“, одговорила је жена поред прозора. Путник је",
+      "criterion_ru": "Например: „захвалио и сео.“ Сохраняются ситуация в поезде и роли участников разговора.",
+      "completion": " пренео да је воз дошао у пратњи девојке, која је била у ауту.\n„Јесам, али сам био са мном",
+      "prompt_tokens": 40,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "d710ab45b6d5676b0c5046aa34881f1d62f573babf505448864a1ead2d10b10c"
+    },
+    {
+      "id": 16,
+      "level": 4,
+      "type": "question",
+      "category": "Вопрос: время",
+      "prompt": "Воз је кренуо у 14:20 и стигао у 15:05 истог дана. Колико минута је трајало путовање?",
+      "criterion_ru": "45 минута.",
+      "completion": " Воз је кренуо у 14:05 и стигао у 15:05.\nПитање: Воз је кренуо у 14:05 и стигао",
+      "prompt_tokens": 36,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "model_prompt": "Питање: Воз је кренуо у 14:20 и стигао у 15:05 истог дана. Колико минута је трајало путовање?\nОдговор:",
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "dab0362585fef45d3d6aeba0ba35f9315b23dc8e17234be66acfc629fcd9c1a1"
+    },
+    {
+      "id": 17,
+      "level": 4,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Лука је кренуо у школу, али је на пола пута приметио да је заборавио свеску. До почетка часа остало је двадесет минута. Зато је",
+      "criterion_ru": "Продолжение учитывает забытую тетрадь и ограничение времени. Действия Луки последовательны, проблема получает понятное развитие или разрешение.",
+      "completion": " одлучио да почне да се зеза са другарима.\n- Ситуација се само погоршавала када смо морали да сачекамо са другарима",
+      "prompt_tokens": 34,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "d3d8a18f8caf53bbe391d5aaea46e0b635e4bffc797c7f2cb90e54c9b66c50ce"
+    },
+    {
+      "id": 18,
+      "level": 5,
+      "type": "question",
+      "category": "Вопрос: недостаточно данных",
+      "prompt": "У затвореној кутији је једна лопта. Може бити црвена или плава. Кутија није отворена и нема других података. Може ли се утврдити које је боје лопта?",
+      "criterion_ru": "Не. Нема довољно података. Модель не выбирает произвольно красный или синий цвет.",
+      "completion": " У затвореној кутији је једна лопта. Може ли се утврдити да ли је плава или црвена?\nОдговор: У затвореној кут",
+      "prompt_tokens": 48,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "model_prompt": "Питање: У затвореној кутији је једна лопта. Може бити црвена или плава. Кутија није отворена и нема других података. Може ли се утврдити које је боје лопта?\nОдговор:",
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.0,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "7196880e4f065c90be95ea11f4e59f838606294fe7bfccdc9db08a51cebd871a"
+    },
+    {
+      "id": 19,
+      "level": 5,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Ана и Милица су кренуле на излет. Понеле су храну и воду, али су заборавиле кишобран. Када су стигле до језера, почела је јака киша. У близини су угледале малу кућу. Ана је предложила да",
+      "criterion_ru": "Связная история с развитием и завершением. Сохраняются героини, дождь и отсутствие зонта; действия учитывают исходную ситуацию.",
+      "completion": " се упусте у кућу.\nБило јој је лако. Сестра се појавила у њеном дому, а отац је био са њом",
+      "prompt_tokens": 58,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "66aa73ee71dca8f5aad4df1efe37b3dc86225333f7156af8fb71aa82cb47905c"
+    },
+    {
+      "id": 20,
+      "level": 5,
+      "type": "continuation",
+      "category": "Продолжение",
+      "prompt": "Једни становници желе да се поред школе направи паркинг, а други желе мали парк. Паркинг би олакшао долазак аутомобилом, док би парк пружио простор за одмор и игру. Добро решење би било",
+      "criterion_ru": "Осмысленное предложение и его обоснование. Допустим любой вариант или компромисс, но аргументы соответствуют описанной ситуации.",
+      "completion": " да се паркира у зеленој површини поред пута у близини зелене површине поред пута.\nОчекивано трајање живота становника у урбаним",
+      "prompt_tokens": 48,
+      "prompt_was_truncated": false,
+      "generated_tokens": 32,
+      "generation": {
+        "max_new_tokens": 32,
+        "temperature": 0.8,
+        "top_k": 40,
+        "seed": 42
+      },
+      "completion_sha256": "95899adb6c812d55608ccb02dcbada4ecd4c23ee900ef33851e996844c17005f"
+    }
+  ],
+  "question_format": "sft"
+}

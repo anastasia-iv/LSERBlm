@@ -1,4 +1,5 @@
 """Decoder-only architectures used in the Serbian runs."""
+
 import math
 
 import torch
@@ -16,7 +17,9 @@ class RMSNorm(nn.Module):
         self.eps = eps
 
     def forward(self, x):
-        normalized = x.float() * torch.rsqrt(x.float().square().mean(dim=-1, keepdim=True) + self.eps)
+        normalized = x.float() * torch.rsqrt(
+            x.float().square().mean(dim=-1, keepdim=True) + self.eps
+        )
         return normalized.to(x.dtype) * self.weight.to(x.dtype)
 
 
@@ -65,15 +68,23 @@ class Attention(nn.Module):
             mask = causal[None, None, :, :] & attention_mask[:, None, None, :].bool()
 
         if c.attention_backend == "sdpa":
-            y = F.scaled_dot_product_attention(q, k, v, attn_mask=mask,
+            y = F.scaled_dot_product_attention(
+                q,
+                k,
+                v,
+                attn_mask=mask,
                 dropout_p=c.dropout if self.training else 0.0,
-                is_causal=mask is None, enable_gqa=c.n_heads != c.n_kv_heads)
+                is_causal=mask is None,
+                enable_gqa=c.n_heads != c.n_kv_heads,
+            )
         else:
             groups = c.n_heads // c.n_kv_heads
             k = k.repeat_interleave(groups, dim=1)
             v = v.repeat_interleave(groups, dim=1)
             if mask is None:
-                mask = torch.ones(length, length, device=x.device, dtype=torch.bool).tril()[None, None]
+                mask = torch.ones(length, length, device=x.device, dtype=torch.bool).tril()[
+                    None, None
+                ]
             scores = (q @ k.transpose(-2, -1)) / math.sqrt(self.head_dim)
             scores = scores.masked_fill(~mask, float("-inf"))
             probabilities = F.softmax(scores.float(), dim=-1).to(q.dtype)
@@ -87,7 +98,9 @@ class FeedForward(nn.Module):
         super().__init__()
         self.kind = config.ffn
         self.up_proj = nn.Linear(config.d_model, config.d_ff, bias=False)
-        self.gate_proj = nn.Linear(config.d_model, config.d_ff, bias=False) if self.kind == "swiglu" else None
+        self.gate_proj = (
+            nn.Linear(config.d_model, config.d_ff, bias=False) if self.kind == "swiglu" else None
+        )
         self.out_proj = nn.Linear(config.d_ff, config.d_model, bias=False)
         self.dropout = nn.Dropout(config.dropout)
 
@@ -123,7 +136,11 @@ class SmallLM(nn.Module):
         super().__init__()
         self.config = config
         self.embedding = nn.Embedding(config.vocab_size, config.d_model)
-        self.positions = nn.Embedding(config.context_length, config.d_model) if config.positional == "absolute" else None
+        self.positions = (
+            nn.Embedding(config.context_length, config.d_model)
+            if config.positional == "absolute"
+            else None
+        )
         self.dropout = nn.Dropout(config.dropout)
         self.blocks = nn.ModuleList([Block(config) for _ in range(config.n_layers)])
         self.final_norm = make_norm(config)
@@ -162,18 +179,28 @@ class SmallLM(nn.Module):
         loss = None
         if labels is not None:
             # labels are already shifted by the batch builder. Never shift twice.
-            loss = F.cross_entropy(logits.float().reshape(-1, logits.size(-1)), labels.reshape(-1), ignore_index=-100)
+            loss = F.cross_entropy(
+                logits.float().reshape(-1, logits.size(-1)), labels.reshape(-1), ignore_index=-100
+            )
         return logits, loss
 
     @torch.inference_mode()
-    def generate(self, input_ids, max_new_tokens=100, temperature=0.8, top_k=40, eos_id=None, forbidden_ids=()):
+    def generate(
+        self,
+        input_ids,
+        max_new_tokens=100,
+        temperature=0.8,
+        top_k=40,
+        eos_id=None,
+        forbidden_ids=(),
+    ):
         if input_ids.size(0) != 1:
             raise ValueError("This simple generation method accepts one prompt at a time.")
         was_training = self.training
         self.eval()
         try:
             for _ in range(max_new_tokens):
-                window = input_ids[:, -self.config.context_length:]
+                window = input_ids[:, -self.config.context_length :]
                 logits, _ = self(window, last_only=True)
                 logits = logits[:, -1, :].float()
                 for token_id in forbidden_ids:
@@ -197,12 +224,16 @@ class SmallLM(nn.Module):
         total = sum(p.numel() for p in self.parameters())
         embeddings = self.embedding.weight.numel()
         positions = 0 if self.positions is None else self.positions.weight.numel()
-        return {"parameters": total, "unique_blocks": len(self.blocks),
-                "block_repeats": self.config.block_repeats,
-                "block_applications": len(self.blocks) * self.config.block_repeats,
-                "qk_norm": self.config.qk_norm,
-                "token_embedding_parameters": embeddings,
-                "position_parameters": positions, "non_embedding_parameters": total - embeddings - positions,
-                "fp32_weights_bytes": total * 4,
-                "fp32_weights_gradients_adam_moments_bytes": total * 16,
-                "note": "16P excludes activations, temporary tensors, optimizer step counters, and allocator overhead."}
+        return {
+            "parameters": total,
+            "unique_blocks": len(self.blocks),
+            "block_repeats": self.config.block_repeats,
+            "block_applications": len(self.blocks) * self.config.block_repeats,
+            "qk_norm": self.config.qk_norm,
+            "token_embedding_parameters": embeddings,
+            "position_parameters": positions,
+            "non_embedding_parameters": total - embeddings - positions,
+            "fp32_weights_bytes": total * 4,
+            "fp32_weights_gradients_adam_moments_bytes": total * 16,
+            "note": "16P excludes activations, temporary tensors, optimizer step counters, and allocator overhead.",
+        }

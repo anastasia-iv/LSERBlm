@@ -1,4 +1,5 @@
 """Collect source candidates and prepare the Wikipedia/FineWeb mixture."""
+
 import copy
 import json
 from collections import Counter
@@ -23,11 +24,16 @@ def adapt_document(row, spec):
     if wikipedia and spec["subset"] != "20231101.sr":
         raise ValueError("Wikipedia adapter requires the verified Serbian edition config.")
     return {
-        "text": row.get("text") or "", "id": row.get("id"), "url": row.get("url"),
-        "title": row.get("title"), "language": "srp" if wikipedia else row.get("language"),
+        "text": row.get("text") or "",
+        "id": row.get("id"),
+        "url": row.get("url"),
+        "title": row.get("title"),
+        "language": "srp" if wikipedia else row.get("language"),
         "language_score": None if wikipedia else row.get("language_score"),
         "language_evidence": "serbian_wikipedia_edition" if wikipedia else "source_glotlid",
-        "source": spec["dataset"], "source_revision": spec["revision"], "source_subset": spec["subset"],
+        "source": spec["dataset"],
+        "source_revision": spec["revision"],
+        "source_subset": spec["subset"],
     }
 
 
@@ -44,7 +50,12 @@ def collect_source(spec, base_config, output_file):
     path.parent.mkdir(parents=True, exist_ok=True)
     manifest_path = path.with_suffix(".manifest.json")
     filters = source_filters(base_config, spec)
-    identity = {"adapter_version": 2, "stream_version": STREAM_VERSION, "source": spec, "filters": filters}
+    identity = {
+        "adapter_version": 2,
+        "stream_version": STREAM_VERSION,
+        "source": spec,
+        "filters": filters,
+    }
     if manifest_path.exists():
         manifest = read_json(manifest_path)
         if manifest["identity"] != identity or file_sha256(path) != manifest["file_sha256"]:
@@ -52,18 +63,24 @@ def collect_source(spec, base_config, output_file):
         return manifest
     partial = path.with_suffix(".partial")
     if path.exists() or partial.exists():
-        raise FileExistsError("Incomplete source download; use a new output directory: " + str(path))
+        raise FileExistsError(
+            "Incomplete source download; use a new output directory: " + str(path)
+        )
     if spec["target_text_mb"] <= 0:
         raise ValueError("Source byte target must be positive.")
     print("Opening pinned source:", spec["dataset"], spec["subset"], flush=True)
-    rows = stream_documents(spec["dataset"], spec["subset"], spec["revision"],
-                            filters["seed"], spec["shuffle_buffer"])
+    rows = stream_documents(
+        spec["dataset"], spec["subset"], spec["revision"], filters["seed"], spec["shuffle_buffer"]
+    )
     target = round(spec["target_text_mb"] * 1_000_000)
     scanned = accepted = accepted_bytes = raw_bytes = 0
     rejected = Counter()
     rejected_samples = []
-    with closing(rows), partial.open("x", encoding="utf-8") as file, tqdm(total=target, unit="B", unit_scale=True,
-                                                          desc=spec["name"]) as bar:
+    with (
+        closing(rows),
+        partial.open("x", encoding="utf-8") as file,
+        tqdm(total=target, unit="B", unit_scale=True, desc=spec["name"]) as bar,
+    ):
         for row in rows:
             scanned += 1
             record = adapt_document(row, spec)
@@ -72,8 +89,9 @@ def collect_source(spec, base_config, output_file):
             if reason is not None:
                 rejected[reason] += 1
                 if len(rejected_samples) < 100:
-                    rejected_samples.append({"reason": reason, "text": record["text"][:1500],
-                                             "url": record["url"]})
+                    rejected_samples.append(
+                        {"reason": reason, "text": record["text"][:1500], "url": record["url"]}
+                    )
             else:
                 # Keep original accepted text here; prepare() applies normalization.
                 file.write(json.dumps(record, ensure_ascii=False) + "\n")
@@ -89,11 +107,18 @@ def collect_source(spec, base_config, output_file):
     if not accepted:
         raise ValueError("No accepted documents for " + spec["name"])
     partial.replace(path)
-    report = {"identity": identity, "scanned_documents": scanned, "scanned_raw_text_bytes": raw_bytes,
-              "accepted_candidate_documents": accepted, "candidate_clean_text_bytes": accepted_bytes,
-              "target_reached": accepted_bytes >= target, "rejected": dict(rejected),
-              "rejected_samples": rejected_samples, "file_sha256": file_sha256(path),
-              "note": "Candidates before global deduplication. Source-specific rejection counters are first-match reasons."}
+    report = {
+        "identity": identity,
+        "scanned_documents": scanned,
+        "scanned_raw_text_bytes": raw_bytes,
+        "accepted_candidate_documents": accepted,
+        "candidate_clean_text_bytes": accepted_bytes,
+        "target_reached": accepted_bytes >= target,
+        "rejected": dict(rejected),
+        "rejected_samples": rejected_samples,
+        "file_sha256": file_sha256(path),
+        "note": "Candidates before global deduplication. Source-specific rejection counters are first-match reasons.",
+    }
     write_json(manifest_path, report)
     return report
 
@@ -122,12 +147,18 @@ def assemble_candidates(paths, base_config, output, candidate_documents):
     write_json(output / "effective_cleaning.json", filters)
     manifest = prepare(filters, output / "corpus", combined)
     audit = audit_splits(output / "corpus")
-    return {"corpus": str(output / "corpus"), "clean_text_bytes": manifest["clean_text_bytes"],
-            "source_text_bytes": manifest["source_text_bytes"], "split_documents": manifest["split_documents"],
-            "split_audit": audit}
+    return {
+        "corpus": str(output / "corpus"),
+        "clean_text_bytes": manifest["clean_text_bytes"],
+        "source_text_bytes": manifest["source_text_bytes"],
+        "split_documents": manifest["split_documents"],
+        "split_audit": audit,
+    }
 
 
-def prepare_project_data(base_config, mixture_config, output, fineweb_mb=None, wiki_mb=None, candidates_only=False):
+def prepare_project_data(
+    base_config, mixture_config, output, fineweb_mb=None, wiki_mb=None, candidates_only=False
+):
     """Prepare both sources; run separately for pilot and main corpus."""
     output = Path(output)
     mixture = copy.deepcopy(mixture_config)
@@ -149,13 +180,22 @@ def prepare_project_data(base_config, mixture_config, output, fineweb_mb=None, w
     cleaning = copy.deepcopy(base_config)
     cleaning["target_text_mb"] = sum(spec["target_text_mb"] for spec in mixture["sources"])
     if candidates_only:
-        result = {"candidate_paths": [str(p) for p in paths], "candidate_documents": documents,
-                  "candidate_clean_text_bytes": sum(r["candidate_clean_text_bytes"] for r in reports.values()),
-                  "stage": "source-filtered candidates only; expand-corpus performs global dedup and frozen-holdout checks"}
+        result = {
+            "candidate_paths": [str(p) for p in paths],
+            "candidate_documents": documents,
+            "candidate_clean_text_bytes": sum(
+                r["candidate_clean_text_bytes"] for r in reports.values()
+            ),
+            "stage": "source-filtered candidates only; expand-corpus performs global dedup and frozen-holdout checks",
+        }
     else:
         result = assemble_candidates(paths, cleaning, output, documents)
-    result["source_targets_reached"] = {name: report["target_reached"] for name, report in reports.items()}
-    result["note"] = "Byte targets refer to cleaned candidates BEFORE global deduplication; final size and proportions can differ."
+    result["source_targets_reached"] = {
+        name: report["target_reached"] for name, report in reports.items()
+    }
+    result["note"] = (
+        "Byte targets refer to cleaned candidates BEFORE global deduplication; final size and proportions can differ."
+    )
     write_json(output / "mixture_config.json", mixture)
     write_json(output / "preparation_result.json", result)
     return result

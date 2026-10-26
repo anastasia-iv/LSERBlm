@@ -30,8 +30,7 @@ def normalize_text(text):
 
 
 def text_signature(text):
-    # Only whitespace and Unicode normalization define exact duplicates.
-    # Keep numbers, punctuation and case: different dates/facts are not exact copies.
+    # Exact dedup preserves case, numbers and punctuation.
     normalized = " ".join(normalize_text(text).split())
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
 
@@ -40,17 +39,29 @@ def wikipedia_quality_reason(text, title):
     """Conservative prose heuristics, applied only to the Wikipedia source."""
     title = (title or "").casefold().strip()
     lead = text.split("\n", 1)[0].casefold().strip()
-    if ("(вишезначна одредница)" in title or "(разврставање)" in title
-            or (len(lead) < 250 and lead.endswith(":") and re.search(
-                r"\b(?:има више значења|може (?:да се односи|се односити) на|може означавати)\b", lead))):
+    if (
+        "(вишезначна одредница)" in title
+        or "(разврставање)" in title
+        or (
+            len(lead) < 250
+            and lead.endswith(":")
+            and re.search(
+                r"\b(?:има више значења|може (?:да се односи|се односити) на|може означавати)\b",
+                lead,
+            )
+        )
+    ):
         return "wikipedia_disambiguation"
     if title.startswith(("списак ", "spisak ")):
         return "wikipedia_list"
     lines = [line.strip() for line in text.splitlines() if line.strip()]
     lengths = [len(words_of(line)) for line in lines]
     if len(lines) >= 8 and sum(n < 20 for n in lengths) / len(lines) >= 0.8:
-        prose_words = sum(n for line, n in zip(lines, lengths)
-                          if n >= 20 and re.search(r"[.!?][\s\"»”’)]*$", line))
+        prose_words = sum(
+            n
+            for line, n in zip(lines, lengths)
+            if n >= 20 and re.search(r"[.!?][\s\"»”’)]*$", line)
+        )
         if prose_words / max(1, sum(lengths)) < 0.35:
             return "wikipedia_list"
     return None
@@ -58,9 +69,22 @@ def wikipedia_quality_reason(text, title):
 
 def strip_wikipedia_tail(text):
     """Cut only standalone terminal-section headings, never inline mentions."""
-    headings = {"референце", "извори", "литература", "спољашње везе", "види још",
-                "напомене", "белешке", "reference", "izvori", "literatura",
-                "spoljašnje veze", "vidi još", "napomene", "beleške"}
+    headings = {
+        "референце",
+        "извори",
+        "литература",
+        "спољашње везе",
+        "види још",
+        "напомене",
+        "белешке",
+        "reference",
+        "izvori",
+        "literatura",
+        "spoljašnje veze",
+        "vidi još",
+        "napomene",
+        "beleške",
+    }
     lines = text.splitlines()
     for index, line in enumerate(lines):
         heading = line.strip().strip("=# ").rstrip(":").casefold()
@@ -73,8 +97,12 @@ def web_noise_reason(text):
     lines = [line.strip() for line in text.splitlines() if line.strip()]
     if len(lines) < 8:
         return None
-    noisy = sum(bool(re.match(r"^(?:https?://|www\.)", line)) or line.count("|") >= 3
-                or (len(words_of(line)) < 8 and not re.search(r"[.!?]$", line)) for line in lines)
+    noisy = sum(
+        bool(re.match(r"^(?:https?://|www\.)", line))
+        or line.count("|") >= 3
+        or (len(words_of(line)) < 8 and not re.search(r"[.!?]$", line))
+        for line in lines
+    )
     return "web_navigation_or_table" if noisy / len(lines) >= 0.7 else None
 
 
@@ -119,11 +147,11 @@ def clean_document(row, config):
 
 def sketch_of(text, config):
     words = words_of(text)
-    shingles = {" ".join(words[i:i + 5]) for i in range(max(0, len(words) - 4))}
+    shingles = {" ".join(words[i : i + 5]) for i in range(max(0, len(words) - 4))}
     if not shingles:
         shingles = {" ".join(words)}
     shingles = sorted(shingles, key=lambda s: hashlib.blake2b(s.encode(), digest_size=8).digest())
-    shingles = shingles[:config["max_shingles"]]
+    shingles = shingles[: config["max_shingles"]]
     sketch = MinHash(num_perm=config["minhash_permutations"], seed=config["seed"])
     sketch.update_batch([s.encode("utf-8") for s in shingles])
     return sketch
@@ -151,9 +179,15 @@ def prepare(config, output, input_jsonl=None):
     source_info = {"kind": "local", "sha256": file_sha256(input_jsonl)} if input_jsonl else None
     if source_info is None:
         from huggingface_hub import HfApi
+
         revision = HfApi().dataset_info(config["dataset"], revision=config["revision"]).sha
-        source_info = {"kind": "huggingface", "dataset": config["dataset"], "subset": config["subset"],
-                       "revision": revision, "source_split": "train"}
+        source_info = {
+            "kind": "huggingface",
+            "dataset": config["dataset"],
+            "subset": config["subset"],
+            "revision": revision,
+            "source_split": "train",
+        }
     identity = {"pipeline_version": "serbian-clean-v4", "config": config, "source": source_info}
     manifest_path = output / "manifest.json"
     if manifest_path.exists():
@@ -166,14 +200,23 @@ def prepare(config, output, input_jsonl=None):
         return manifest
     paths = {s: output / (s + ".jsonl") for s in ["train", "validation", "test"]}
     if any(p.exists() for p in paths.values()):
-        raise RuntimeError("Incomplete preparation detected. Use a new --output directory; partial data is not trusted.")
+        raise RuntimeError(
+            "Incomplete preparation detected. Use a new --output directory; partial data is not trusted."
+        )
     if input_jsonl:
         source = read_jsonl(input_jsonl)
     else:
-        source = stream_documents(config["dataset"], config["subset"], source_info["revision"],
-                                  config["seed"], config["shuffle_buffer"])
+        source = stream_documents(
+            config["dataset"],
+            config["subset"],
+            source_info["revision"],
+            config["seed"],
+            config["shuffle_buffer"],
+        )
     seen = set()
-    lsh = MinHashLSH(threshold=config["near_duplicate_threshold"], num_perm=config["minhash_permutations"])
+    lsh = MinHashLSH(
+        threshold=config["near_duplicate_threshold"], num_perm=config["minhash_permutations"]
+    )
     rejected, counts, byte_counts, domains = Counter(), Counter(), Counter(), Counter()
     source_counts, source_bytes, split_sources = Counter(), Counter(), {s: Counter() for s in paths}
     raw_words, train_words = Counter(), Counter()
@@ -208,9 +251,21 @@ def prepare(config, output, input_jsonl=None):
                     lsh.insert(signature, sketch)
                 split = choose_split(signature, config)
                 domain = urlparse(row.get("url") or "").netloc
-                record = {"id": signature, "text": text, "source_url": row.get("url"), "domain": domain,
-                          "source_id": row.get("id"), "language_score": row.get("language_score")}
-                for key in ["source", "source_revision", "source_subset", "title", "language_evidence"]:
+                record = {
+                    "id": signature,
+                    "text": text,
+                    "source_url": row.get("url"),
+                    "domain": domain,
+                    "source_id": row.get("id"),
+                    "language_score": row.get("language_score"),
+                }
+                for key in [
+                    "source",
+                    "source_revision",
+                    "source_subset",
+                    "title",
+                    "language_evidence",
+                ]:
                     if key in row:
                         record[key] = row[key]
                 files[split].write(json.dumps(record, ensure_ascii=False) + "\n")
@@ -232,7 +287,10 @@ def prepare(config, output, input_jsonl=None):
             if scanned % 5000 == 0:
                 for handle in files.values():
                     handle.flush()
-                write_json(output / "progress.json", {"scanned": scanned, "text_bytes": total_bytes, "rejected": dict(rejected)})
+                write_json(
+                    output / "progress.json",
+                    {"scanned": scanned, "text_bytes": total_bytes, "rejected": dict(rejected)},
+                )
             byte_limit = total_bytes >= target_bytes and not config.get("process_all_input", False)
             if byte_limit or scanned >= config["max_scanned_documents"]:
                 break
@@ -243,7 +301,10 @@ def prepare(config, output, input_jsonl=None):
         bar.close()
     if any(counts[s] == 0 for s in paths):
         raise RuntimeError("A split is empty; increase corpus size in a new output directory.")
-    for filename, records in [("audit_samples.jsonl", audit), ("rejected_samples.jsonl", rejected_examples)]:
+    for filename, records in [
+        ("audit_samples.jsonl", audit),
+        ("rejected_samples.jsonl", rejected_examples),
+    ]:
         with (output / filename).open("w", encoding="utf-8") as file:
             for record in records:
                 file.write(json.dumps(record, ensure_ascii=False) + "\n")
@@ -251,19 +312,33 @@ def prepare(config, output, input_jsonl=None):
         file.write("word\tcount\n")
         for word, count in train_words.most_common():
             file.write(f"{word}\t{count}\n")
-    np.savez_compressed(output / "lengths.npz", raw=np.array(raw_lengths), train=np.array(train_lengths))
-    manifest = {"identity": identity, "scanned_documents": scanned, "scanned_raw_text_bytes": raw_bytes,
-                "clean_text_bytes": total_bytes, "target_reached": total_bytes >= target_bytes,
-                "split_documents": dict(counts), "split_text_bytes": dict(byte_counts), "rejected": dict(rejected),
-                "source_documents": dict(source_counts), "source_text_bytes": dict(source_bytes),
-                "split_source_documents": {s: dict(c) for s, c in split_sources.items()},
-                "train_words": sum(train_words.values()), "train_word_types": len(train_words),
-                "train_hapax_types": sum(n == 1 for n in train_words.values()),
-                "raw_top_words": raw_words.most_common(50), "train_top_domains": domains.most_common(30),
-                "file_sha256": {s: file_sha256(p) for s, p in paths.items()},
-                "notes": ["Raw statistics cover all scanned records; clean frequencies cover train only.",
-                          "Source classifier scores or explicitly trusted edition metadata plus script heuristics are not independent language verification.",
-                          "MinHash is approximate and does not prove zero near-duplicate leakage."]}
+    np.savez_compressed(
+        output / "lengths.npz", raw=np.array(raw_lengths), train=np.array(train_lengths)
+    )
+    manifest = {
+        "identity": identity,
+        "scanned_documents": scanned,
+        "scanned_raw_text_bytes": raw_bytes,
+        "clean_text_bytes": total_bytes,
+        "target_reached": total_bytes >= target_bytes,
+        "split_documents": dict(counts),
+        "split_text_bytes": dict(byte_counts),
+        "rejected": dict(rejected),
+        "source_documents": dict(source_counts),
+        "source_text_bytes": dict(source_bytes),
+        "split_source_documents": {s: dict(c) for s, c in split_sources.items()},
+        "train_words": sum(train_words.values()),
+        "train_word_types": len(train_words),
+        "train_hapax_types": sum(n == 1 for n in train_words.values()),
+        "raw_top_words": raw_words.most_common(50),
+        "train_top_domains": domains.most_common(30),
+        "file_sha256": {s: file_sha256(p) for s, p in paths.items()},
+        "notes": [
+            "Raw statistics cover all scanned records; clean frequencies cover train only.",
+            "Source classifier scores or explicitly trusted edition metadata plus script heuristics are not independent language verification.",
+            "MinHash is approximate and does not prove zero near-duplicate leakage.",
+        ],
+    }
     write_json(manifest_path, manifest)
     plot_corpus(output)
     return manifest
@@ -271,8 +346,10 @@ def prepare(config, output, input_jsonl=None):
 
 def plot_corpus(folder):
     import matplotlib
+
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+
     folder = Path(folder)
     lengths = np.load(folder / "lengths.npz")
     fig, axes = plt.subplots(1, 2, figsize=(10, 4))
@@ -315,16 +392,26 @@ def audit_splits(folder, minimum_paragraph_characters=200, output=None):
                 collision = previous is not None and previous[0] != split
                 paragraph_collisions += int(collision)
                 if collision and len(examples) < 100:
-                    examples.append({"first_split": previous[0], "first_document": previous[1],
-                                     "second_split": split, "second_document": row.get("id", signature),
-                                     "paragraph_sha256": key, "paragraph": paragraph[:2000]})
+                    examples.append(
+                        {
+                            "first_split": previous[0],
+                            "first_document": previous[1],
+                            "second_split": split,
+                            "second_document": row.get("id", signature),
+                            "paragraph_sha256": key,
+                            "paragraph": paragraph[:2000],
+                        }
+                    )
                 if collision:
                     pairs[f"{previous[0]}:{split}"] += 1
                 seen_paragraphs.setdefault(key, (split, row.get("id", signature)))
-    report = {"exact_cross_split_documents": exact, "shared_long_paragraph_occurrences": paragraph_collisions,
-              "minimum_paragraph_characters": minimum_paragraph_characters,
-              "shared_paragraph_examples": examples,
-              "shared_paragraph_split_pairs": dict(pairs),
-              "note": "Shared paragraphs can be quotations or boilerplate; inspect before interpreting as leakage."}
+    report = {
+        "exact_cross_split_documents": exact,
+        "shared_long_paragraph_occurrences": paragraph_collisions,
+        "minimum_paragraph_characters": minimum_paragraph_characters,
+        "shared_paragraph_examples": examples,
+        "shared_paragraph_split_pairs": dict(pairs),
+        "note": "Shared paragraphs can be quotations or boilerplate; inspect before interpreting as leakage.",
+    }
     write_json(output or folder / "split_audit.json", report)
     return report

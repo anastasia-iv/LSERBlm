@@ -1,0 +1,283 @@
+{
+  "reviewer": "Manual assistant review; not independent; complete answers considered, including repetition and errors.",
+  "rubric": "0 not met, 1 partly met, 2 met; language, coherence, task scored separately; development set, no confidence estimates.",
+  "runs": {
+    "deep_continue_B": {
+      "21": {
+        "completion_sha256": "f74db94d7c06fcd82bc178bcd53c56131e53d4130fc3b22f9c41a5fb3e4138a7",
+        "translation_ru": "Западной Европе, а по численности населения — четвёртая на Балканах. По данным 2021 года Сербия занимает второе место в мировом рейтин [обрыв]",
+        "verdict_ru": "Вместо корректного места — Западная Европа и уход к рейтингам.",
+        "scores": {
+          "language": 2,
+          "coherence": 1,
+          "task": 0
+        },
+        "prompt_sha256": "68b4ef6be30709ed59ac39f62de3bd4ec858f6dceff2d9ad0572db4031032ec0"
+      },
+      "22": {
+        "completion_sha256": "11670a5e873d37ebcb8c369fed845712c5d412adcc7e7a613da2ef24530edc24",
+        "translation_ru": "Республики Сербии с богатым культурным наследием, и более 15 000 городов и общин находится в столице. Государство Сербия с гордостью",
+        "verdict_ru": "Сербия названа правильно; дальше неверные числа и разрушенная конструкция.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 1
+        },
+        "prompt_sha256": "8adf5d1151a3399539dabd374e5db9c768307dbcec213103f9f1b0ccaf0a468f"
+      },
+      "23": {
+        "completion_sha256": "e55eb306bf706bf8d8630d7b6d54e6139e66c5d3516cfe6db86c191e76e4d8a4",
+        "translation_ru": "всегда был хорошим другом и жужжать в него. Не следует забывать, что собаку часто используют как спутника. Владельца часто считают",
+        "verdict_ru": "Есть уместные друг и спутник, но встречаются бессмыслица и обрыв.",
+        "scores": {
+          "language": 1,
+          "coherence": 1,
+          "task": 1
+        },
+        "prompt_sha256": "d1bde486d4712c42695adcc1064f0155f7749a3d47c880f601cb8a5aa74837c4"
+      },
+      "24": {
+        "completion_sha256": "383e86df525c830c8470cad4e370ef35ac337f51d6f24566605d96d45ba6ebce",
+        "translation_ru": "очищенный, по твоему милому лицу мило. Чудо моё, Господи, прошу, прости, чтобы мне прос [обрыв; сбивчивый текст]",
+        "verdict_ru": "Бытовой рассказ сменился несвязными молитвенными строками.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "35657d6b10c2153dad70ba5e5416b55bd7e4ef50a10ef6995879cc5fc0d3ab2d"
+      },
+      "25": {
+        "completion_sha256": "1ba5748db2312fae86c487cfb62a2a3dfc1f88f229eaa5301d7e12f18be37769",
+        "translation_ru": "бутылках, а дети играют в бутылках. Привет! Ребёнок не может ходиться [ошибка оригинала]. У ребёнка есть стадия развития",
+        "verdict_ru": "Нелогичное место игры, повтор и смена темы.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "5d39cd0af306257be4424dd2d2ea7520c8452b40e425e3307c2c86120fd4f887"
+      },
+      "1": {
+        "completion_sha256": "6f781de5d439b4f2ba56ffdceb4a0b8955ea5a7b3bedcb3d777697a03e4321eb",
+        "translation_ru": "яркое. Прошлогодняя мама испугалась, чтобы не жаловаться на неё, а после того как она открыла свою",
+        "verdict_ru": "Начало о ярком солнце подходит; затем несвязный переход к маме.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 1
+        },
+        "prompt_sha256": "74b9d2afe378ff60a3e020f3dfbaa6aaa55680311d9af5e9ba68734a62fff8a7"
+      },
+      "2": {
+        "completion_sha256": "3be14c6d8818c4a886728ed37944397674f5cbf753b8434d30815505fcfee8ab",
+        "translation_ru": "Какой самый большой город в Сербии? Какой самый большой город в Сербии? Какой самый большой город в Сербии? Какой самый большой",
+        "verdict_ru": "Вместо ответа — повтор другого вопроса; Белград не назван.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "6b172526258b41ea0ed13575bff49b36408ad3d06b7d637cc4bc3a6f5ee096be"
+      },
+      "3": {
+        "completion_sha256": "6fae2691510a15b8fe2a1f7834a6a6ba6d363f1ed229b7a373a1221f43a46f95",
+        "translation_ru": "очищенный, был здоров и чист. Ух, это не моё право. Я свободен. Я свобо [обрыв]",
+        "verdict_ru": "Возвращение с рынка не развивается, меняется лицо рассказа и начинается повтор.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "e96dc28d15a163af8c391333c00d6010482ca681e628375491b3c5055272b583"
+      },
+      "4": {
+        "completion_sha256": "186351d77bd1ccf859d9fed19bd17a4c9a9758fcf362f10ed63f25e391dba0b0",
+        "translation_ru": "— У Милицы 12 карандашей. Она купила ещё одну коробку. Она купила ещё одну. Она купила ещё одну. Купила",
+        "verdict_ru": "Нет подсчёта и ответа 6; модель меняет условие и повторяется.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "22a75d5ed592ee9c05b45c63190fe5f4047feea06b8d8e7f34a441ceb41181c1"
+      },
+      "5": {
+        "completion_sha256": "1544fee1bd3059cb823c94876de390121abff01d46e5f0c7b920723e4a43c6ad",
+        "translation_ru": "— Яблоки были в форме яблока, а яблоки были в форме яблока. Яблоки были в форме яблока,",
+        "verdict_ru": "Повтор о форме яблок не объясняет загадку.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "11cb7c0af3c91332d15360932da140ec502104acf119e9b85582b1b707987872"
+      },
+      "6": {
+        "completion_sha256": "4fdb40a3cb34ae0c4cf12d5e0e718b837a97d6e6f1fbb89ca7700c01ba863dc2",
+        "translation_ru": "Сколько дней в одной неделе? Сколько дней в одной неделе? Сколько дней в одной неделе? Сколько дней в одной неделе?",
+        "verdict_ru": "Повтор вопроса без ответа 7.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "2a89a7e41ef6b7307dbed433b05c5ca5a0c0fda4d86f438159e74c8d1e5a33d4"
+      },
+      "7": {
+        "completion_sha256": "8741011bcebbcdaead4f10eaaf72d81d16a3779621f205af8c0f8524caa06a64",
+        "translation_ru": "в соответствии с потребностями тела. Если мой живот слишком устал, появляется диарея. Боль в животе, тошнота, гр [обрыв]",
+        "verdict_ru": "Подходящий напиток не назван; текст уходит к симптомам.",
+        "scores": {
+          "language": 2,
+          "coherence": 1,
+          "task": 0
+        },
+        "prompt_sha256": "fe79a1f304ab2b9903d5c988c07420d18b34f8d6c3958d0d0a224d70a648580f"
+      },
+      "8": {
+        "completion_sha256": "85f992f47293f49e274c593da6b9f06a246683f66320621328cfb58f1442b8e9",
+        "translation_ru": "Кошка спит в доме. Кошка спит в доме. Кошка спит в доме. Кошка спит в доме.",
+        "verdict_ru": "Не извлечено точное место «под столом»; повторяется более общий ответ.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "a16bff727d468302333d2275cbbff9eddb20707aa84374ffbf88544889a8582a"
+      },
+      "9": {
+        "completion_sha256": "143a244502c587281f84105608e6b65e378040fae141a3ca5f9f1fc303aafdfb",
+        "translation_ru": "в сопровождении бабушки и дедушки, разговаривала с ними. — Когда я вернулась, несколько лет назад она начала звать меня, чтобы меня",
+        "verdict_ru": "Начало согласовано с Милицей; затем сбивается рассказ и теряется библиотека.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 1
+        },
+        "prompt_sha256": "8174dd3fd666284f50dc359e8db7f2ee0d7cafdcbbe0a45e0c328ef8843158e1"
+      },
+      "10": {
+        "completion_sha256": "ed6811c53cb7af1540234a4d19502abf33fde0cbeab5d161097eefc672b9e852",
+        "translation_ru": "— В коробке было 6 карандашей. Сколько карандашей в коробке? — Сколько карандашей в коро [обрыв]",
+        "verdict_ru": "Начальное количество изменено на 6; правильного ответа 11 нет.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "e78e81def3ef7313bc26bea5a126e16c37aad25def9626d2f2dd8c4ea8eacd6b"
+      },
+      "11": {
+        "completion_sha256": "e4e643a93bdd74106f967de3afa4d69f052d09c653c98c7868aa2178ade1eed1",
+        "translation_ru": "перенёс питьё по твоему образу в воздух, где мы познакомились. Прошло несколько часов. Общался с нами.",
+        "verdict_ru": "Нелогичная фраза и смена лиц; дождь не учитывается.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "0dd2ab9b6acab47a8b72c5be31e3a54197af8eb749373e348ef76244772b0c04"
+      },
+      "12": {
+        "completion_sha256": "a59cc125b4ccd40b7bebedea3b7949971c236a3787da0b9f353cc74c1dff1ae8",
+        "translation_ru": "Марко привёл книгу Елене. Марко привёл книгу Елене. Марко привёл книгу Елене. Мар [обрыв]",
+        "verdict_ru": "Елена указана как получатель, но ответ оформлен неестественно и повторяется.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 1
+        },
+        "prompt_sha256": "5a1ff62d25a15ec1124f02900c1ee836fd4fb1abf4234c746fa0dc4c4682393e"
+      },
+      "13": {
+        "completion_sha256": "84a5482a12e1df111dd7304adbbee9acfcf9985af2776bf0519006b77de3d2cd",
+        "translation_ru": "есть и большой парк для наблюдения. Рядом с этой горой находится Малый парк. Пространство красивое, а рядом есть и парк для",
+        "verdict_ru": "Тема парка удерживается частично; появляются парк внутри парка, гора и повтор.",
+        "scores": {
+          "language": 2,
+          "coherence": 1,
+          "task": 1
+        },
+        "prompt_sha256": "da3cd7c83c7e6cd8957e018be069e53c8037fed42b4e39c05e58d36ad679e682"
+      },
+      "14": {
+        "completion_sha256": "517d0b6b15ffe6d8a798b2c4b06ba907445facfdd705ad732b298d41de5b91a8",
+        "translation_ru": "Ана выше Марко и имеет самую большую чистую стоимость, чем Марко. Ана выше Марко и имеет самую бол [обрыв]",
+        "verdict_ru": "Иван не назван; сравнение роста сменилось стоимостью.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "4bc4bb8ff7f81fe0f16f2498a635a8b8c594360fa55f8027dee5184b13dde373"
+      },
+      "15": {
+        "completion_sha256": "d710ab45b6d5676b0c5046aa34881f1d62f573babf505448864a1ead2d10b10c",
+        "translation_ru": "передал, что поезд прибыл в сопровождении девушки, которая была в машине. «Да, но я был со мной",
+        "verdict_ru": "Не развивается ситуация со свободным местом; роли и контекст разрушены.",
+        "scores": {
+          "language": 1,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "d2b7d46c74ed7566fd48d70f2b7d8844a4058c690de7cd578f7d92dfa342cebf"
+      },
+      "16": {
+        "completion_sha256": "5dcae6bc68bc34ccf6aac49d894bcfdbad5849155c9d051a76ee1f3743b80767",
+        "translation_ru": "Поезд отправился в 14:20 и прибыл к 21:20. Сколько длилась поездка? Поездка дли [обрыв]",
+        "verdict_ru": "Изменено время прибытия; ответа 45 минут нет.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "925208a60a88fdb3048c6301c0114cb785a01c3a558e63a03967c1f4137d4c2e"
+      },
+      "17": {
+        "completion_sha256": "d3d8a18f8caf53bbe391d5aaea46e0b635e4bffc797c7f2cb90e54c9b66c50ce",
+        "translation_ru": "решил начать дурачиться с друзьями. — Ситуация только ухудшалась, когда нам пришлось подождать с друзьями",
+        "verdict_ru": "Есть последовательность фраз, но забытая тетрадь и ограничение времени не учитываются.",
+        "scores": {
+          "language": 2,
+          "coherence": 1,
+          "task": 0
+        },
+        "prompt_sha256": "49bbb587611fe79943f44731325624fb4b5a12c4126a823a7d7ccf6395e69f1b"
+      },
+      "18": {
+        "completion_sha256": "f574c8b2dc81a9ddcd69f63a50f6681956129c62f501c301e063c2a8d0b7e996",
+        "translation_ru": "Коробка — это мяч, который находится в коробке. Может быть красной или синей. Может быть красной или синей. Может быть",
+        "verdict_ru": "Нет вывода о недостатке данных; коробка смешана с мячом, затем повтор.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 0
+        },
+        "prompt_sha256": "bfed306c9cdcf2e24e0f888f270c02f88f06d6c0cdbb7e0ecef1416fcbaa86f8"
+      },
+      "19": {
+        "completion_sha256": "66aa73ee71dca8f5aad4df1efe37b3dc86225333f7156af8fb71aa82cb47905c",
+        "translation_ru": "отправиться в дом. Ей было легко. Сестра появилась в её доме, а отец был с ней",
+        "verdict_ru": "Первое действие подходит для укрытия от дождя; затем теряются героини и исходная ситуация.",
+        "scores": {
+          "language": 2,
+          "coherence": 1,
+          "task": 1
+        },
+        "prompt_sha256": "ac1b3d1b18205f59eeb7729c8a0e4e10a9ea78394dba8d974d82b05ef2417c8a"
+      },
+      "20": {
+        "completion_sha256": "95899adb6c812d55608ccb02dcbada4ecd4c23ee900ef33851e996844c17005f",
+        "translation_ru": "парковаться на зелёной территории рядом с дорогой вблизи зелёной территории рядом с дорогой. Ожидаемая продолжительность жизни жителей в городских",
+        "verdict_ru": "Есть предложение о парковке, но без обоснования; затем повтор и переход к продолжительности жизни.",
+        "scores": {
+          "language": 2,
+          "coherence": 0,
+          "task": 1
+        },
+        "prompt_sha256": "efa310db854fb3c284a0d306247cabde013c0e1591d6a30edc6d8ede59dfcd2c"
+      }
+    }
+  }
+}
